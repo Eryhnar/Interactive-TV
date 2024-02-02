@@ -95,6 +95,8 @@ body{
 
 
 
+
+
 #tvBottom{
     width: 80%;
     height: 15%;
@@ -110,6 +112,288 @@ body{
 #remoteBody{
     /* width: 100%; */
     height: 80%;
+
+    width: 20em;
+
+
     background-color: #3b3b3b;
+
+    border-radius: 2em;
     
+    position: relative;
+}
+
+.button{
+    width: 3em;
+    height: 3em;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: absolute;
+}
+
+#powerButton{
+    background-color: red;
+
+    top: 2em;
+    left: 2em;
+
+    border-radius: 100em;
+}
+
+#menuButton{
+    background-color: #1f1f1f;
+
+    top: 2.5em;
+    /* left: 15em; */
+    right: 2em;
+
+    width: 3em;
+    height: 2em;
+}
+
+#srcButton{
+    background-color: #1f1f1f;
+
+    top: 6em;
+    left: 2em;
+
+    width: 3em;
+    height: 2em;
+}
+
+#infoButton{
+    background-color: #1f1f1f;
+
+    top: 6em;
+    /* left: 15em; */
+    right: 2em;
+
+    width: 3em;
+    height: 2em;
+}
+
+/* to remove */
+
+#test{
+    position: relative;
+    background-color: #c4c4c4;
+
+    top: 11em;
+    left: 3.25em;
+
+    width: 12em;
+    height: 12em;
+    border-radius: 100em;
+}
+
+/* #navUpButton{
+    background-color: #1f1f1f;
+
+    top: 10em;
+    left: 2.5em;
+
+    width: 15em;
+    height: 4em;
+}
+
+#navRightButton{
+    background-color: #1f1f1f;
+
+    top: 14em;
+    right: 2.5em;
+
+    width: 4em;
+    height: 15em;
+}     */
+
+
+/* #navUpButton{
+    background-color: #1f1f1f;
+
+    top: 0em;
+    left: 0em;
+
+    width: 15em;
+    height: 4em;
+}
+
+#navRightButton{
+    background-color: #1f1f1f;
+
+    top: 5em;
+    right: 0em;
+
+    width: 4em;
+    height: 15em;
+}     */
+
+#volButton{
+    background-color: #1f1f1f;
+
+    bottom: 15em;
+    left: 3em;
+
+    width: 3em;
+    height: 6em;
+
+    border-radius: 100%;
+}
+
+#muteButton{
+    background-color: #1f1f1f;
+
+    bottom: 18.5em;
+    left: 9em;
+
+    width: 2em;
+    height: 2em;
+
+    border-radius: 100%;
+}
+
+#backChannelButton{
+    background-color: #1f1f1f;
+
+    bottom: 15.5em;
+    left: 9em;
+
+    width: 2em;
+    height: 2em;
+
+    border-radius: 100%;
+}
+
+#channelButton{
+    background-color: #1f1f1f;
+
+    bottom: 15em;
+    right: 3em;
+
+    width: 3em;
+    height: 6em;
+
+    border-radius: 100%;
+}
+
+#button1{
+    background-color: #c5c5c5;
+
+    bottom: 11em;
+    left: 4em;
+
+    width: 2.5em;
+    height: 2.5em;
+
+    border-radius: 100%;
+}
+
+#button2{
+    background-color: #c5c5c5;
+
+    bottom: 11em;
+    left: 8.75em;
+
+    width: 2.5em;
+    height: 2.5em;
+
+    border-radius: 100%;
+}
+
+#button3{
+    background-color: #c5c5c5;
+
+    bottom: 11em;
+    right: 4em;
+
+    width: 2.5em;
+    height: 2.5em;
+
+    border-radius: 100%;
+}
+
+#button4{
+    background-color: #c5c5c5;
+
+    bottom: 7.5em;
+    left: 4em;
+
+    width: 2.5em;
+    height: 2.5em;
+
+    border-radius: 100%;
+}
+
+#button5{
+    background-color: #c5c5c5;
+
+    bottom: 7.5em;
+    left: 8.75em;
+
+    width: 2.5em;
+    height: 2.5em;
+
+    border-radius: 100%;
+}
+
+#button6{
+    background-color: #c5c5c5;
+
+    bottom: 7.5em;
+    right: 4em;
+
+    width: 2.5em;
+    height: 2.5em;
+
+    border-radius: 100%;
+}
+
+#button7{
+    background-color: #c5c5c5;
+
+    bottom: 4em;
+    left: 4em;
+
+    width: 2.5em;
+    height: 2.5em;
+
+    border-radius: 100%;
+}
+
+#button8{
+    background-color: #c5c5c5;
+
+    bottom: 4em;
+    left: 8.75em;
+
+    width: 2.5em;
+    height: 2.5em;
+
+    border-radius: 100%;
+}
+
+#button9{
+    background-color: #c5c5c5;
+
+    bottom: 4em;
+    right: 4em;
+
+    width: 2.5em;
+    height: 2.5em;
+
+    border-radius: 100%;
+}
+
+#button0{
+    background-color: #c5c5c5;
+
+    bottom: 0.5em;
+    left: 8.75em;
+
+    width: 2.5em;
+    height: 2.5em;
+
+    border-radius: 100%;
 }
