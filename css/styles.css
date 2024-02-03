@@ -97,18 +97,22 @@ body{
 #tvScreenArea{
     /* width: 85%;
     height: 85%; */
-    width: 85em; /* or any other value */
+    width: 65em; /* should try 70em */
     height: 0;
-    padding-bottom: calc((9 / 16) * 85em); 
+    padding-bottom: calc((9 / 16) * 65em); 
     background-color: blue;
     position: relative;
 
-    display: flex;
+    /* display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: center; */
 
     overflow: hidden;
+
+    padding-left: 0;
 }
+
+
 
 
 #tvScreenArea img {
@@ -123,7 +127,21 @@ body{
 }
 
 
+#screenTest{ /* this is trash*/
+    /* width: 85%;
+    height: 85%; */
+    width: 65em; /* or any other value */
+    height: 0;
+    padding-bottom: calc((9 / 16) * 65em); 
+    background-color: yellow;
+    /* position: relative; */
 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    /* overflow: hidden; */
+}
 
 
 

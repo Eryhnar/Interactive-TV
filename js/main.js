@@ -1,18 +1,18 @@
 let power = false;
 
-const screen = document.getElementById('tvScreen');
+const screen = document.getElementById("tvScreen");
 
 const numBtns = [
-    document.getElementById('button1'),
-    document.getElementById('button2'),
-    document.getElementById('button3'),
-    document.getElementById('button4'),
-    document.getElementById('button5'),
-    document.getElementById('button6'),
-    document.getElementById('button7'),
-    document.getElementById('button8'),
-    document.getElementById('button9'),
-    document.getElementById('button0'),
+    document.getElementById("button1"),
+    document.getElementById("button2"),
+    document.getElementById("button3"),
+    document.getElementById("button4"),
+    document.getElementById("button5"),
+    document.getElementById("button6"),
+    document.getElementById("button7"),
+    document.getElementById("button8"),
+    document.getElementById("button9"),
+    document.getElementById("button0"),
   ];
 
 // document.getElementById('powerButton').addEventListener('click', () => {
@@ -22,7 +22,7 @@ const numBtns = [
 // });
 
 
-document.getElementById('powerButton').addEventListener('click', () => {
+document.getElementById("powerButton").addEventListener("click", () => {
     power = !power;
     console.log(power);
     if (power) {
@@ -40,18 +40,18 @@ document.getElementById('powerButton').addEventListener('click', () => {
 
 
 
-numBtns.map(
-    (btn) => btn.addEventListener('click', () => {
+numBtns.map((btn) => {
+    
+    console.log(btn);
+    btn.addEventListener("click", (e) => {
         if (power) {
-            screen.src = "./img/default.jpg";
+            // screen.classList.remove(screen.classList[screen.classList.length - 1])
+            let buttonNumber = e.target.id.slice(-1);
+            console.log(buttonNumber);
+            screen.src = `./img/channel${buttonNumber}.jpg`;
         }
-    })
-);
+    });
+    
+});
 
 
-document.getElementById("piloto").addEventListener("click", (evento) => {
-    if (power) {
-        screen.classList.remove("pilotoOff");
-        screen.classList.add("pilotoOn");       
-    }
-})
