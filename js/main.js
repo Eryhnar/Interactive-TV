@@ -1,6 +1,8 @@
 let power = false;
 
-const screen = document.getElementById("tvScreen");
+const SCREEN = document.getElementById("tvScreen");
+
+let previousChannel
 
 const numBtns = [
     document.getElementById("button1"),
@@ -24,17 +26,18 @@ const numBtns = [
 
 document.getElementById("powerButton").addEventListener("click", () => {
     power = !power;
-    console.log(power);
     if (power) {
         document.getElementById("pilotLight").classList.remove("pilotLightOff");
         document.getElementById("pilotLight").classList.add("pilotLightOn");
-        screen.src = "./img/default.jpg";
-        console.log(document.getElementById("pilotLight").classList);
+            if (previousChannel) {
+                SCREEN.src = previousChannel;
+            } else {
+                SCREEN.src = "./img/default.jpg";
+            }
     } else {
         document.getElementById("pilotLight").classList.remove("pilotLightOn");
         document.getElementById("pilotLight").classList.add("pilotLightOff");
-        screen.src = "./img/off.jpg";
-        console.log(document.getElementById("pilotLight").classList);
+        SCREEN.src = "./img/off.jpg";
     }
 });
 
@@ -42,16 +45,26 @@ document.getElementById("powerButton").addEventListener("click", () => {
 
 numBtns.map((btn) => {
     
-    console.log(btn);
     btn.addEventListener("click", (e) => {
         if (power) {
             // screen.classList.remove(screen.classList[screen.classList.length - 1])
             let buttonNumber = e.target.id.slice(-1);
-            console.log(buttonNumber);
-            screen.src = `./img/channel${buttonNumber}.jpg`;
+            if (previousChannel) {
+                previousChannel = SCREEN.src;
+            } else {
+                previousChannel = `./img/channel${buttonNumber}.jpg`
+            }
+            SCREEN.src = `./img/channel${buttonNumber}.jpg`;
         }
     });
     
+});
+
+document.getElementById("muteButton").addEventListener("click", () => {
+    if (power) {
+        document.getElementById("muteArea").classList.toggle("hidden");
+        // volume mute to be implemented here
+    }
 });
 
 

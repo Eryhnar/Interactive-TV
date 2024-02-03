@@ -126,22 +126,33 @@ body{
     padding-bottom: calc((9 / 16) * 85em);  */
 }
 
-
-#screenTest{ /* this is trash*/
-    /* width: 85%;
-    height: 85%; */
-    width: 65em; /* or any other value */
-    height: 0;
-    padding-bottom: calc((9 / 16) * 65em); 
-    background-color: yellow;
-    /* position: relative; */
-
-    display: flex;
+#muteArea{
+    width: 3em; 
+    height: 3em;
+    
+    /* display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: center; */
 
-    /* overflow: hidden; */
+    position: absolute;
+
+    top: 1em;
+    right: 1em;
+
+    /* background-color: #c41f1f; */
+    background-color: #c5c5c5;
+    opacity: 50%;
 }
+
+
+
+
+#muteArea img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
 
 
 
@@ -457,4 +468,15 @@ body{
     height: 2.5em;
 
     border-radius: 100%;
+}
+
+#muteButton{
+    color: white;
+}
+
+
+
+
+.hidden{
+    display: none;
 }
