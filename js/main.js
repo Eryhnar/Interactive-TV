@@ -1,4 +1,7 @@
+
 const SCREEN = document.getElementById("tvScreen");
+
+const OVERLAYS = Array.from(document.getElementsByClassName("overlay"));
 
 const numBtns = [
     document.getElementById("button1"),
@@ -89,6 +92,7 @@ document.getElementById("powerButton").addEventListener("click", () => {
     if (appState.power) {
         document.getElementById("pilotLight").classList.remove("pilotLightOff");
         document.getElementById("pilotLight").classList.add("pilotLightOn");
+        // OVERLAYS.map((overlay) => {overlay.classList.remove("hidden");});
             if (appState.previousChannel) {
                 SCREEN.src = appState.previousChannel;
             } else {
@@ -101,6 +105,8 @@ document.getElementById("powerButton").addEventListener("click", () => {
         appState.previousChannel = SCREEN.src;
         
         SCREEN.src = "./img/off.jpg";
+
+        OVERLAYS.map((overlay) => {overlay.classList.add("hidden");});
     }
 });
 
@@ -145,6 +151,6 @@ document.getElementById("channelUpButton").addEventListener("click", (e) => {app
 
 document.getElementById("channelDownButton").addEventListener("click", (e) => {appState.channelDown();});
 
-document.getElementById("volumeUpButton").addEventListener("click", (e) => {appState.volumeUp();});
+document.getElementById("volUpButton").addEventListener("click", (e) => {appState.volumeUp();});
 
-document.getElementById("volumeDownButton").addEventListener("click", (e) => {appState.volumeDown();});
+document.getElementById("volDownButton").addEventListener("click", (e) => {appState.volumeDown();});

@@ -204,6 +204,13 @@ body{
     align-items: center;
 
     position: absolute;
+
+    box-shadow: 0 0.5em;
+}
+
+.button:active{
+    transform: translateY(0.5em);
+    box-shadow: none;
 }
 
 #powerButton{
@@ -213,6 +220,12 @@ body{
     left: 2em;
 
     border-radius: 100em;
+}
+
+#powerButton img {
+    object-fit: cover;
+    width: 80%;
+    height: 80%;
 }
 
 #menuButton{
@@ -374,6 +387,12 @@ body{
     /* border-radius: 100%; */
 }
 
+#volUpButton img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
 #volButtonLabel{
     color: white;
 
@@ -394,6 +413,12 @@ body{
     height: 3em; */
 
     /* border-radius: 100%; */
+}
+
+#volDownButton img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
 }
 
 #channelButton{
@@ -423,6 +448,12 @@ body{
     /* border-radius: 100%; */
 }
 
+#channelUpButton img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
 #channelButtonLabel{
     color: white;
 
@@ -443,6 +474,12 @@ body{
     height: 3em; */
 
     /* border-radius: 100%; */
+}
+
+#channelDownButton img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
 }
 
 #button1{
