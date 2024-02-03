@@ -336,6 +336,15 @@ body{
     height: 2em;
 
     border-radius: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#backChannelButton img{
+    width: 1.5em;
+    height: 1.5em;
 }
 
 #channelButton{
@@ -348,6 +357,43 @@ body{
     height: 6em;
 
     border-radius: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+#channelUpButton{
+    color: white;
+
+    padding: 0.5em;   
+    /* width: 3em;
+    height: 3em; */
+
+    /* border-radius: 100%; */
+}
+
+#channelButtonLabel{
+    color: white;
+
+    padding: 0.5em;
+
+    /* width: 3em;
+    height: 3em; */
+
+    /* border-radius: 100%; */
+}
+
+#channelDownButton{
+    color: white;
+
+    padding: 0.5em;
+
+    /* width: 3em;
+    height: 3em; */
+
+    /* border-radius: 100%; */
 }
 
 #button1{

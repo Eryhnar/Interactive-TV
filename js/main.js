@@ -17,6 +17,21 @@ const numBtns = [
     document.getElementById("button0"),
   ];
 
+let channels = {
+    channel1: "./img/channel1.jpg",
+    channel2: "./img/channel2.jpg",
+    channel3: "./img/channel3.jpg",
+    channel4: "./img/channel4.jpg",
+    channel5: "./img/channel5.jpg",
+    channel6: "./img/channel6.jpg",
+    channel7: "./img/channel7.jpg",
+    channel8: "./img/channel8.jpg",
+    channel9: "./img/channel9.jpg",
+    channel0: "./img/channel0.jpg",
+};
+
+
+
 // document.getElementById('powerButton').addEventListener('click', () => {
 //     power = !power;
 //     screen.src = power ? "./img/default.jpg" : "./img/off.jpg";
@@ -37,6 +52,9 @@ document.getElementById("powerButton").addEventListener("click", () => {
     } else {
         document.getElementById("pilotLight").classList.remove("pilotLightOn");
         document.getElementById("pilotLight").classList.add("pilotLightOff");
+        
+        previousChannel = SCREEN.src;
+        
         SCREEN.src = "./img/off.jpg";
     }
 });
@@ -52,7 +70,7 @@ numBtns.map((btn) => {
             if (previousChannel) {
                 previousChannel = SCREEN.src;
             } else {
-                previousChannel = `./img/channel${buttonNumber}.jpg`
+                previousChannel = `./img/channel${buttonNumber}.jpg`;
             }
             SCREEN.src = `./img/channel${buttonNumber}.jpg`;
         }
@@ -67,4 +85,17 @@ document.getElementById("muteButton").addEventListener("click", () => {
     }
 });
 
+document.getElementById("backChannelButton").addEventListener("click", () => {
+    if (power) {
+        if (previousChannel) {
+            let currentChannel = SCREEN.src;           
+            SCREEN.src = previousChannel;
+            previousChannel = currentChannel;
+        }
+    }
+});
 
+
+document.getElementById("channelUpButton").addEventListener("click", (e) => {
+    
+});
