@@ -347,6 +347,55 @@ body{
     height: 1.5em;
 }
 
+#volButton{
+    background-color: #1f1f1f;
+
+    bottom: 15em;
+    right: 3em;
+
+    width: 3em;
+    height: 6em;
+
+    border-radius: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+#volUpButton{
+    color: white;
+
+    padding: 0.5em;   
+    /* width: 3em;
+    height: 3em; */
+
+    /* border-radius: 100%; */
+}
+
+#volButtonLabel{
+    color: white;
+
+    padding: 0.5em;
+
+    /* width: 3em;
+    height: 3em; */
+
+    /* border-radius: 100%; */
+}
+
+#volDownButton{
+    color: white;
+
+    padding: 0.5em;
+
+    /* width: 3em;
+    height: 3em; */
+
+    /* border-radius: 100%; */
+}
+
 #channelButton{
     background-color: #1f1f1f;
 

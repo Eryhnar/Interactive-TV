@@ -1,8 +1,4 @@
-let power = false;
-
 const SCREEN = document.getElementById("tvScreen");
-
-let previousChannel
 
 const numBtns = [
     document.getElementById("button1"),
@@ -17,35 +13,84 @@ const numBtns = [
     document.getElementById("button0"),
   ];
 
-let channels = {
-    channel1: "./img/channel1.jpg",
-    channel2: "./img/channel2.jpg",
-    channel3: "./img/channel3.jpg",
-    channel4: "./img/channel4.jpg",
-    channel5: "./img/channel5.jpg",
-    channel6: "./img/channel6.jpg",
-    channel7: "./img/channel7.jpg",
-    channel8: "./img/channel8.jpg",
-    channel9: "./img/channel9.jpg",
-    channel0: "./img/channel0.jpg",
-};
+const appState = {
 
+    power: false,
 
+    volume: 0,
 
-// document.getElementById('powerButton').addEventListener('click', () => {
-//     power = !power;
-//     screen.src = power ? "./img/default.jpg" : "./img/off.jpg";
-//     console.log(power);
-// });
+    currentChannel: null,
 
+    previousChannel: null,
+
+    channels: {
+        channel1: "./img/channel1.jpg",
+        channel2: "./img/channel2.jpg",
+        channel3: "./img/channel3.jpg",
+        channel4: "./img/channel4.jpg",
+        channel5: "./img/channel5.jpg",
+        channel6: "./img/channel6.jpg",
+        channel7: "./img/channel7.jpg",
+        channel8: "./img/channel8.jpg",
+        channel9: "./img/channel9.jpg",
+        channel0: "./img/channel0.jpg",
+    },
+
+    changeChannel: function(channel) {
+        this.currentChannel = channel;
+        this.previousChannel = SCREEN.src;
+        SCREEN.src = this.channels[channel];
+    },
+
+    togglePower: function() {
+        this.power = !this.power;
+    },
+
+    channelUp: function() {
+        let channelKeys = Object.keys(this.channels);
+        let currentIndex = channelKeys.indexOf(this.currentChannel);
+        if (currentIndex === channelKeys.length - 1) {
+            this.changeChannel(channelKeys[0]);
+        } else {
+            this.changeChannel(channelKeys[currentIndex + 1]);
+        }
+    },
+    
+    channelDown: function() {
+        let channelKeys = Object.keys(this.channels);
+        let currentIndex = channelKeys.indexOf(this.currentChannel);
+        if (currentIndex === 0) {
+            this.changeChannel(channelKeys[channelKeys.length - 1]);
+        } else {
+            this.changeChannel(channelKeys[currentIndex - 1]);
+        }
+    },
+
+    volumeUp: function() {
+        if (this.volume < 100) {
+            this.volume += 10;
+        }
+    },
+
+    volumeDown: function() {
+        if (this.volume > 0) {
+            this.volume -= 10;
+        }
+    },
+
+    mute: function() {
+        this.volume = 0;
+    }
+
+}
 
 document.getElementById("powerButton").addEventListener("click", () => {
-    power = !power;
-    if (power) {
+    appState.togglePower();
+    if (appState.power) {
         document.getElementById("pilotLight").classList.remove("pilotLightOff");
         document.getElementById("pilotLight").classList.add("pilotLightOn");
-            if (previousChannel) {
-                SCREEN.src = previousChannel;
+            if (appState.previousChannel) {
+                SCREEN.src = appState.previousChannel;
             } else {
                 SCREEN.src = "./img/default.jpg";
             }
@@ -53,7 +98,7 @@ document.getElementById("powerButton").addEventListener("click", () => {
         document.getElementById("pilotLight").classList.remove("pilotLightOn");
         document.getElementById("pilotLight").classList.add("pilotLightOff");
         
-        previousChannel = SCREEN.src;
+        appState.previousChannel = SCREEN.src;
         
         SCREEN.src = "./img/off.jpg";
     }
@@ -64,13 +109,13 @@ document.getElementById("powerButton").addEventListener("click", () => {
 numBtns.map((btn) => {
     
     btn.addEventListener("click", (e) => {
-        if (power) {
+        if (appState.power) {
             // screen.classList.remove(screen.classList[screen.classList.length - 1])
             let buttonNumber = e.target.id.slice(-1);
-            if (previousChannel) {
-                previousChannel = SCREEN.src;
+            if (appState.previousChannel) {
+                appState.previousChannel = SCREEN.src;
             } else {
-                previousChannel = `./img/channel${buttonNumber}.jpg`;
+                appState.previousChannel = `./img/channel${buttonNumber}.jpg`;
             }
             SCREEN.src = `./img/channel${buttonNumber}.jpg`;
         }
@@ -79,23 +124,27 @@ numBtns.map((btn) => {
 });
 
 document.getElementById("muteButton").addEventListener("click", () => {
-    if (power) {
+    if (appState.power) {
         document.getElementById("muteArea").classList.toggle("hidden");
-        // volume mute to be implemented here
+        appState.mute();
     }
 });
 
 document.getElementById("backChannelButton").addEventListener("click", () => {
-    if (power) {
-        if (previousChannel) {
-            let currentChannel = SCREEN.src;           
-            SCREEN.src = previousChannel;
-            previousChannel = currentChannel;
+    if (appState.power) {
+        if (appState.previousChannel) {
+            appState.currentChannel = SCREEN.src;           
+            SCREEN.src = appState.previousChannel;
+            appState.previousChannel = appState.currentChannel;
         }
     }
 });
 
 
-document.getElementById("channelUpButton").addEventListener("click", (e) => {
-    
-});
+document.getElementById("channelUpButton").addEventListener("click", (e) => {appState.channelUp();});
+
+document.getElementById("channelDownButton").addEventListener("click", (e) => {appState.channelDown();});
+
+document.getElementById("volumeUpButton").addEventListener("click", (e) => {appState.volumeUp();});
+
+document.getElementById("volumeDownButton").addEventListener("click", (e) => {appState.volumeDown();});
