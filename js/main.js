@@ -15,10 +15,27 @@ const numBtns = [
     document.getElementById('button0'),
   ];
 
+// document.getElementById('powerButton').addEventListener('click', () => {
+//     power = !power;
+//     screen.src = power ? "./img/default.jpg" : "./img/off.jpg";
+//     console.log(power);
+// });
+
+
 document.getElementById('powerButton').addEventListener('click', () => {
     power = !power;
-    // screen.src = power ? "./img/default.jpg" : "./img/off.jpg";
     console.log(power);
+    if (power) {
+        document.getElementById("pilotLight").classList.remove("pilotLightOff");
+        document.getElementById("pilotLight").classList.add("pilotLightOn");
+        screen.src = "./img/default.jpg";
+        console.log(document.getElementById("pilotLight").classList);
+    } else {
+        document.getElementById("pilotLight").classList.remove("pilotLightOn");
+        document.getElementById("pilotLight").classList.add("pilotLightOff");
+        screen.src = "./img/off.jpg";
+        console.log(document.getElementById("pilotLight").classList);
+    }
 });
 
 
@@ -30,3 +47,11 @@ numBtns.map(
         }
     })
 );
+
+
+document.getElementById("piloto").addEventListener("click", (evento) => {
+    if (power) {
+        screen.classList.remove("pilotoOff");
+        screen.classList.add("pilotoOn");       
+    }
+})
