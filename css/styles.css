@@ -153,6 +153,33 @@ body{
     height: 100%;
 }
 
+#programInfoArea{
+    width: 65em; 
+    height: 10em;
+    
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+
+    position: absolute;
+
+    top: calc(100% - 10em);
+    left: 0em;
+
+    /* background-color: #c41f1f; */
+    background-color: #3d1cb8;
+    opacity: 80%;
+
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+}
+
+
+
+#prgmTagArea{
+    
+}
 
 
 
@@ -175,6 +202,8 @@ body{
     background-color: brown;
     margin-bottom: 7em;
 }
+
+
 
 #remoteArea{
     margin: 0;
@@ -251,6 +280,7 @@ body{
 
 #infoButton{
     background-color: #1f1f1f;
+    color: white;
 
     top: 6em;
     /* left: 15em; */
@@ -610,5 +640,5 @@ body{
 
 
 .hidden{
-    display: none;
+    display: none !important;
 }
