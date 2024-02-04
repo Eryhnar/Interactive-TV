@@ -1,5 +1,7 @@
 
-const SCREEN = document.getElementById("tvScreen");
+const IMGSCREEN = document.getElementById("tvScreenOff");
+
+const VIDSCREEN = document.getElementById("tvScreen");
 
 const OVERLAYS = Array.from(document.getElementsByClassName("overlay"));
 
@@ -310,16 +312,15 @@ const appState = {
             if (this.previousChannel) {
                 this.previousChannel = this.currentChannel;
                 this.previousChannelId = this.currentChannelId;
-                this.currentChannel = `./img/${channel}.jpg`;
+                this.currentChannel = `./mov/${channel}.webm`;
                 this.currentChannelId = channel;
             } else {
-                this.previousChannel = `./img/${channel}.jpg`;
+                this.previousChannel = `./mov/${channel}.webm`;
                 this.previousChannelId = channel;
-                this.currentChannel = `./img/${channel}.jpg`;
+                this.currentChannel = `./mov/${channel}.webm`;
                 this.currentChannelId = channel;
             }
-            console.log(channel);
-            SCREEN.src = `./img/${channel}.jpg`;
+            VIDSCREEN.src = `./mov/${channel}.webm`;
 
         }
     },
@@ -387,24 +388,31 @@ const appState = {
 }
 
 
-
+// need to fix this mess
 document.getElementById("powerButton").addEventListener("click", () => {
     appState.togglePower();
     if (appState.power) {
-        document.getElementById("pilotLight").classList.remove("pilotLightOff");
-        document.getElementById("pilotLight").classList.add("pilotLightOn");
+        document.getElementById("pilotLight").classList.remove("pilotLightOff");//add to togglePower
+        document.getElementById("pilotLight").classList.add("pilotLightOn");//add to togglePower
             if (appState.previousChannel) {
-                SCREEN.src = appState.previousChannel;
+                document.getElementById("tvScreenOff").classList.add("hidden");
+                document.getElementById("tvScreen").classList.remove("hidden");
+                VIDSCREEN.src = appState.previousChannel;
             } else {
-                SCREEN.src = "./img/default.jpg";
+                document.getElementById("tvScreenOff").classList.add("hidden");
+                document.getElementById("tvScreen").classList.remove("hidden");
+                VIDSCREEN.src = "./mov/default.mp4";
             }
     } else {
-        document.getElementById("pilotLight").classList.remove("pilotLightOn");
-        document.getElementById("pilotLight").classList.add("pilotLightOff");
+        document.getElementById("pilotLight").classList.remove("pilotLightOn");//add to togglePower
+        document.getElementById("pilotLight").classList.add("pilotLightOff");//add to togglePower
         
-        appState.previousChannel = SCREEN.src;
+        appState.previousChannel = VIDSCREEN.src;
         
-        SCREEN.src = "./img/off.jpg";
+        document.getElementById("tvScreen").classList.add("hidden");
+        document.getElementById("tvScreen").pause();
+        document.getElementById("tvScreenOff").classList.remove("hidden");
+        // IMGSCREEN.src = "./img/off.jpg";
 
         OVERLAYS.map((overlay) => {overlay.classList.add("hidden");});
     }
