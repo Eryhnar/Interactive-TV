@@ -24,7 +24,11 @@ const appState = {
 
     volume: 0,
 
+    currentChannelId: null,
+
     currentChannel: null,
+    
+    previousChannelId: null,
 
     previousChannel: null,
 
@@ -146,7 +150,7 @@ document.getElementById("powerButton").addEventListener("click", () => {
     }
 });
 
-
+// && appState.previousChannel != `.img/channel${buttonNumber}.jpg`
 
 numBtns.map((btn) => {
     
@@ -155,9 +159,21 @@ numBtns.map((btn) => {
             // screen.classList.remove(screen.classList[screen.classList.length - 1])
             let buttonNumber = e.target.id.slice(-1);
             if (appState.previousChannel) {
-                appState.previousChannel = SCREEN.src;
+                appState.previousChannel = appState.currentChannel;
+                appState.previousChannelId = appState.currentChannelId;
+                appState.currentChannel = `./img/channel${buttonNumber}.jpg`;
+                appState.currentChannelId = `channel${buttonNumber}`;
+                // console.log(appState.previousChannelId);
+                // console.log(appState.currentChannelId);
+                // console.log("previous channel")
             } else {
                 appState.previousChannel = `./img/channel${buttonNumber}.jpg`;
+                appState.previousChannelId = `channel${buttonNumber}`;
+                appState.currentChannel = `./img/channel${buttonNumber}.jpg`;
+                appState.currentChannelId = `channel${buttonNumber}`;
+                // console.log("no previous channel")
+                // console.log(appState.previousChannelId);
+                // console.log(appState.currentChannelId);
             }
             SCREEN.src = `./img/channel${buttonNumber}.jpg`;
         }
