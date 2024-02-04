@@ -220,6 +220,10 @@ body{
     flex-direction: row;
     /* justify-content: space-evenly; */
     align-items: flex-start;
+
+    padding: 0.5em;
+    padding-left: 2em;
+    padding-right: 2em;
     /* padding: 1em;
     padding-left: 2em;
     padding-right: 2em; */
@@ -232,12 +236,35 @@ body{
 
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    margin-right: 1em;
 
 }
 
-#prgmTagArea{
-    
+.programTitle{
+    background-color: white;
+
+    max-width: 5em;
+
+    border: #000 0.1em solid;
 }
+
+.programTime{
+    background-color: white;
+
+    /* max-width: 5em; */
+
+    font-size: 0.8em;
+
+    display: flex;
+    flex-direction: row;
+
+    border: #000 0.1em solid;
+}
+
+
 
 
 

@@ -18,6 +18,18 @@ const numBtns = [
     document.getElementById("button0"),
   ];
 
+function formatTime(time) {
+    let hours = time.getHours();
+    let minutes = time.getMinutes();
+    if (hours < 10) {
+        hours = `0${hours}`;
+    }
+    if (minutes < 10) {
+        minutes = `0${minutes}`;
+    }
+    return `${hours}:${minutes}`;
+}
+
 const appState = {
 
     power: false,
@@ -45,41 +57,271 @@ const appState = {
             programs: {
                 program1: {
                     title: "Program 1",
-                    startTime: new Date(new Date().getTime() - 10*60000),
-                    endTime: new Date(new Date().getTime() + 45*60000),
+                    startTime: formatTime(new Date(new Date().getTime() - 10*60000)),
+                    endTime: formatTime(new Date(new Date().getTime() + 45*60000)),
                     description: "A show about stuff.",
                 },
                 program2: {
                     title: "Program 2",
-                    startTime: new Date(new Date().getTime() + 45*60000),
-                    endTime: new Date(new Date().getTime() + 105*60000),
+                    startTime: formatTime(new Date(new Date().getTime() + 45*60000)),
+                    endTime: formatTime(new Date(new Date().getTime() + 105*60000)),
                     description: "A show about other stuff.",
                 },
                 program3: {
                     title: "Program 3",
-                    startTime: new Date(new Date().getTime() + 140*60000),
-                    endTime: new Date(new Date().getTime() + 195*60000),
+                    startTime: formatTime(new Date(new Date().getTime() + 140*60000)),
+                    endTime: formatTime(new Date(new Date().getTime() + 195*60000)),
                     description: "A show about more stuff.",
                 },
             },
             
 
         },
-        channel2: "./img/channel2.jpg",
-        channel3: "./img/channel3.jpg",
-        channel4: "./img/channel4.jpg",
-        channel5: "./img/channel5.jpg",
-        channel6: "./img/channel6.jpg",
-        channel7: "./img/channel7.jpg",
-        channel8: "./img/channel8.jpg",
-        channel9: "./img/channel9.jpg",
-        channel0: "./img/channel0.jpg",
+        channel2: {
+            src: "./img/channel2.jpg",
+            title: "Channel 2",
+            programs: {
+                program1: {
+                    title: "Program 1",
+                    startTime: formatTime(new Date(new Date().getTime() - 10*60000)),
+                    endTime: formatTime(new Date(new Date().getTime() + 45*60000)),
+                    description: "A show about stuff.",
+                },
+                program2: {
+                    title: "Program 2",
+                    startTime: formatTime(new Date(new Date().getTime() + 45*60000)),
+                    endTime: formatTime(new Date(new Date().getTime() + 105*60000)),
+                    description: "A show about other stuff.",
+                },
+                program3: {
+                    title: "Program 3",
+                    startTime: formatTime(new Date(new Date().getTime() + 140*60000)),
+                    endTime: formatTime(new Date(new Date().getTime() + 195*60000)),
+                    description: "A show about more stuff.",
+                },
+            },
+        },
+        // channel2: "./img/channel2.jpg",
+        channel3: {
+            src: "./img/channel3.jpg",
+            title: "Channel 3",
+            programs: {
+                program1: {
+                    title: "Program 1",
+                    startTime: formatTime(new Date(new Date().getTime() - 10*60000)),
+                    endTime: formatTime(new Date(new Date().getTime() + 45*60000)),
+                    description: "A show about stuff.",
+                },
+                program2: {
+                    title: "Program 2",
+                    startTime: formatTime(new Date(new Date().getTime() + 45*60000)),
+                    endTime: formatTime(new Date(new Date().getTime() + 105*60000)),
+                    description: "A show about other stuff.",
+                },
+                program3: {
+                    title: "Program 3",
+                    startTime: formatTime(new Date(new Date().getTime() + 140*60000)),
+                    endTime: formatTime(new Date(new Date().getTime() + 195*60000)),
+                    description: "A show about more stuff.",
+                },
+            },
+        },
+        channel4: {
+            src: "./img/channel4.jpg",
+            title: "Channel 4",
+            programs: {
+                program1: {
+                    title: "Program 1",
+                    startTime: formatTime(new Date(new Date().getTime() - 10*60000)),
+                    endTime: formatTime(new Date(new Date().getTime() + 45*60000)),
+                    description: "A show about stuff.",
+                },
+                program2: {
+                    title: "Program 2",
+                    startTime: formatTime(new Date(new Date().getTime() + 45*60000)),
+                    endTime: formatTime(new Date(new Date().getTime() + 105*60000)),
+                    description: "A show about other stuff.",
+                },
+                program3: {
+                    title: "Program 3",
+                    startTime: formatTime(new Date(new Date().getTime() + 140*60000)),
+                    endTime: formatTime(new Date(new Date().getTime() + 195*60000)),
+                    description: "A show about more stuff.",
+                },
+            },
+        },
+        channel5: {
+            src: "./img/channel5.jpg",
+            title: "Channel 5",
+            programs: {
+                program1: {
+                    title: "Program 1",
+                    startTime: formatTime(new Date(new Date().getTime() - 10*60000)),
+                    endTime: formatTime(new Date(new Date().getTime() + 45*60000)),
+                    description: "A show about stuff.",
+                },
+                program2: {
+                    title: "Program 2",
+                    startTime: formatTime(new Date(new Date().getTime() + 45*60000)),
+                    endTime: formatTime(new Date(new Date().getTime() + 105*60000)),
+                    description: "A show about other stuff.",
+                },
+                program3: {
+                    title: "Program 3",
+                    startTime: formatTime(new Date(new Date().getTime() + 140*60000)),
+                    endTime: formatTime(new Date(new Date().getTime() + 195*60000)),
+                    description: "A show about more stuff.",
+                },
+            },
+        },
+        channel6: {
+            src: "./img/channel6.jpg",
+            title: "Channel 6",
+            programs: {
+                program1: {
+                    title: "Program 1",
+                    startTime: formatTime(new Date(new Date().getTime() - 10*60000)),
+                    endTime: formatTime(new Date(new Date().getTime() + 45*60000)),
+                    description: "A show about stuff.",
+                },
+                program2: {
+                    title: "Program 2",
+                    startTime: formatTime(new Date(new Date().getTime() + 45*60000)),
+                    endTime: formatTime(new Date(new Date().getTime() + 105*60000)),
+                    description: "A show about other stuff.",
+                },
+                program3: {
+                    title: "Program 3",
+                    startTime: formatTime(new Date(new Date().getTime() + 140*60000)),
+                    endTime: formatTime(new Date(new Date().getTime() + 195*60000)),
+                    description: "A show about more stuff.",
+                },
+            },
+        },
+        channel7: {
+            src: "./img/channel7.jpg",
+            title: "Channel 7",
+            programs: {
+                program1: {
+                    title: "Program 1",
+                    startTime: formatTime(new Date(new Date().getTime() - 10*60000)),
+                    endTime: formatTime(new Date(new Date().getTime() + 45*60000)),
+                    description: "A show about stuff.",
+                },
+                program2: {
+                    title: "Program 2",
+                    startTime: formatTime(new Date(new Date().getTime() + 45*60000)),
+                    endTime: formatTime(new Date(new Date().getTime() + 105*60000)),
+                    description: "A show about other stuff.",
+                },
+                program3: {
+                    title: "Program 3",
+                    startTime: formatTime(new Date(new Date().getTime() + 140*60000)),
+                    endTime: formatTime(new Date(new Date().getTime() + 195*60000)),
+                    description: "A show about more stuff.",
+                },
+            },
+        },
+        channel8: {
+            src: "./img/channel8.jpg",
+            title: "Channel 8",
+            programs: {
+                program1: {
+                    title: "Program 1",
+                    startTime: formatTime(new Date(new Date().getTime() - 10*60000)),
+                    endTime: formatTime(new Date(new Date().getTime() + 45*60000)),
+                    description: "A show about stuff.",
+                },
+                program2: {
+                    title: "Program 2",
+                    startTime: formatTime(new Date(new Date().getTime() + 45*60000)),
+                    endTime: formatTime(new Date(new Date().getTime() + 105*60000)),
+                    description: "A show about other stuff.",
+                },
+                program3: {
+                    title: "Program 3",
+                    startTime: formatTime(new Date(new Date().getTime() + 140*60000)),
+                    endTime: formatTime(new Date(new Date().getTime() + 195*60000)),
+                    description: "A show about more stuff.",
+                },
+            },
+        },
+        channel9: {
+            src: "./img/channel9.jpg",
+            title: "Channel 9",
+            programs: {
+                program1: {
+                    title: "Program 1",
+                    startTime: formatTime(new Date(new Date().getTime() - 10*60000)),
+                    endTime: formatTime(new Date(new Date().getTime() + 45*60000)),
+                    description: "A show about stuff.",
+                },
+                program2: {
+                    title: "Program 2",
+                    startTime: formatTime(new Date(new Date().getTime() + 45*60000)),
+                    endTime: formatTime(new Date(new Date().getTime() + 105*60000)),
+                    description: "A show about other stuff.",
+                },
+                program3: {
+                    title: "Program 3",
+                    startTime: formatTime(new Date(new Date().getTime() + 140*60000)),
+                    endTime: formatTime(new Date(new Date().getTime() + 195*60000)),
+                    description: "A show about more stuff.",
+                },
+            },
+        },
+        channel0: {
+            src: "./img/channel0.jpg",
+            title: "Channel 0",
+            programs: {
+                program1: {
+                    title: "Program 1",
+                    startTime: formatTime(new Date(new Date().getTime() - 10*60000)),
+                    endTime: formatTime(new Date(new Date().getTime() + 45*60000)),
+                    description: "A show about stuff.",
+                },
+                program2: {
+                    title: "Program 2",
+                    startTime: formatTime(new Date(new Date().getTime() + 45*60000)),
+                    endTime: formatTime(new Date(new Date().getTime() + 105*60000)),
+                    description: "A show about other stuff.",
+                },
+                program3: {
+                    title: "Program 3",
+                    startTime: formatTime(new Date(new Date().getTime() + 140*60000)),
+                    endTime: formatTime(new Date(new Date().getTime() + 195*60000)),
+                    description: "A show about more stuff.",
+                },
+            },
+        },
+        // channel3: "./img/channel3.jpg",
+        // channel4: "./img/channel4.jpg",
+        // channel5: "./img/channel5.jpg",
+        // channel6: "./img/channel6.jpg",
+        // channel7: "./img/channel7.jpg",
+        // channel8: "./img/channel8.jpg",
+        // channel9: "./img/channel9.jpg",
+        // channel0: "./img/channel0.jpg",
     },
 
     changeChannel: function(channel) {
-        this.currentChannel = channel;
-        this.previousChannel = SCREEN.src;
-        SCREEN.src = this.channels[channel];
+        if (this.power) {
+
+            if (this.previousChannel) {
+                this.previousChannel = this.currentChannel;
+                this.previousChannelId = this.currentChannelId;
+                this.currentChannel = `./img/${channel}.jpg`;
+                this.currentChannelId = channel;
+            } else {
+                this.previousChannel = `./img/${channel}.jpg`;
+                this.previousChannelId = channel;
+                this.currentChannel = `./img/${channel}.jpg`;
+                this.currentChannelId = channel;
+            }
+            console.log(channel);
+            SCREEN.src = `./img/${channel}.jpg`;
+
+        }
     },
 
     togglePower: function() {
@@ -88,22 +330,18 @@ const appState = {
 
     channelUp: function() {
         let channelKeys = Object.keys(this.channels);
-        let currentIndex = channelKeys.indexOf(this.currentChannel);
-        if (currentIndex === channelKeys.length - 1) {
-            this.changeChannel(channelKeys[0]);
-        } else {
-            this.changeChannel(channelKeys[currentIndex + 1]);
-        }
+        let currentIndex = channelKeys.indexOf(this.currentChannelId);
+        let nextIndex = currentIndex === channelKeys.length - 1 ? 0 : currentIndex + 1;
+        channel = channelKeys[nextIndex];
+        this.changeChannel(channel);
     },
-    
+
     channelDown: function() {
         let channelKeys = Object.keys(this.channels);
-        let currentIndex = channelKeys.indexOf(this.currentChannel);
-        if (currentIndex === 0) {
-            this.changeChannel(channelKeys[channelKeys.length - 1]);
-        } else {
-            this.changeChannel(channelKeys[currentIndex - 1]);
-        }
+        let currentIndex = channelKeys.indexOf(this.currentChannelId);
+        let nextIndex = currentIndex === 0 ? channelKeys.length : currentIndex - 1;
+        channel = channelKeys[nextIndex];
+        this.changeChannel(channel);
     },
 
     volumeUp: function() {
@@ -131,19 +369,19 @@ const appState = {
         let currentPrograms = Object.values(this.channels[this.currentChannelId].programs);
 
         let programCards = currentPrograms.map(program => {
-            console.log(program);  
+            // console.log(program);  
             
             return `
                 <div class="programCard">
-                    <div>${program.title}</div>
-                    <div>${program.startTime} - ${program.endTime}</div>
+                    <div class="programTitle">${program.title}</div>
+                    <div class="programTime">${program.startTime} - ${program.endTime}</div>
                 </div>
             `;
-            
+
         }).join('');
 
         document.getElementById('infoAreaRow2').innerHTML = programCards;
-        console.log(programCards);
+        // console.log(programCards);
     },
 
 }
@@ -155,7 +393,6 @@ document.getElementById("powerButton").addEventListener("click", () => {
     if (appState.power) {
         document.getElementById("pilotLight").classList.remove("pilotLightOff");
         document.getElementById("pilotLight").classList.add("pilotLightOn");
-        // OVERLAYS.map((overlay) => {overlay.classList.remove("hidden");});
             if (appState.previousChannel) {
                 SCREEN.src = appState.previousChannel;
             } else {
@@ -173,33 +410,13 @@ document.getElementById("powerButton").addEventListener("click", () => {
     }
 });
 
-// && appState.previousChannel != `.img/channel${buttonNumber}.jpg`
 
 numBtns.map((btn) => {
     
     btn.addEventListener("click", (e) => {
-        if (appState.power) {
-            // screen.classList.remove(screen.classList[screen.classList.length - 1])
-            let buttonNumber = e.target.id.slice(-1);
-            if (appState.previousChannel) {
-                appState.previousChannel = appState.currentChannel;
-                appState.previousChannelId = appState.currentChannelId;
-                appState.currentChannel = `./img/channel${buttonNumber}.jpg`;
-                appState.currentChannelId = `channel${buttonNumber}`;
-                // console.log(appState.previousChannelId);
-                // console.log(appState.currentChannelId);
-                // console.log("previous channel")
-            } else {
-                appState.previousChannel = `./img/channel${buttonNumber}.jpg`;
-                appState.previousChannelId = `channel${buttonNumber}`;
-                appState.currentChannel = `./img/channel${buttonNumber}.jpg`;
-                appState.currentChannelId = `channel${buttonNumber}`;
-                // console.log("no previous channel")
-                // console.log(appState.previousChannelId);
-                // console.log(appState.currentChannelId);
-            }
-            SCREEN.src = `./img/channel${buttonNumber}.jpg`;
-        }
+        buttonNumber = e.target.id.slice(-1);
+        channel = `channel${buttonNumber}`
+        appState.changeChannel(channel);
     });
     
 });
