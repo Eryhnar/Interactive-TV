@@ -42,24 +42,27 @@ const appState = {
         channel1: {
             src: "./img/channel1.jpg",
             title: "Channel 1",
-            // program1: {
-            //     title: "Program 1",
-            //     startTime: new Date(new Date().getTime() - 10*60000),
-            //     endTime: new Date(startTime.getTime() + 45*60000),
-            //     description: "A show about stuff.",
-            // },
-            // program2: {
-            //     title: "Program 2",
-            //     startTime: new Date(program1.endTime.getTime()),
-            //     endTime: new Date(program2.startTime.getTime() + 30*60000),
-            //     description: "A show about other stuff.",
-            // },
-            // program3: {
-            //     title: "Program 3",
-            //     startTime: new Date(program2.endTime.getTime()),
-            //     endTime: new Date(program3.startTime.getTime() + 60*60000),
-            //     description: "A show about more stuff.",
-            // },
+            programs: {
+                program1: {
+                    title: "Program 1",
+                    startTime: new Date(new Date().getTime() - 10*60000),
+                    endTime: new Date(new Date().getTime() + 45*60000),
+                    description: "A show about stuff.",
+                },
+                program2: {
+                    title: "Program 2",
+                    startTime: new Date(new Date().getTime() + 45*60000),
+                    endTime: new Date(new Date().getTime() + 105*60000),
+                    description: "A show about other stuff.",
+                },
+                program3: {
+                    title: "Program 3",
+                    startTime: new Date(new Date().getTime() + 140*60000),
+                    endTime: new Date(new Date().getTime() + 195*60000),
+                    description: "A show about more stuff.",
+                },
+            },
+            
 
         },
         channel2: "./img/channel2.jpg",
@@ -121,11 +124,31 @@ const appState = {
 
     showMenu: function() {
         document.getElementById("programInfoArea").classList.toggle("hidden");
-        // console.log(document.getElementById("programInfoArea").classList);
         document.getElementById("channelIdArea").value = this.currentChannel;
+        document.getElementById("channelIdArea").innerText = this.currentChannelId;
+        document.getElementById("timeTagArea").innerText = `${this.hour}:${this.minutes}`;
+        
+        let currentPrograms = Object.values(this.channels[this.currentChannelId].programs);
+
+        let programCards = currentPrograms.map(program => {
+            console.log(program);  
+            
+            return `
+                <div class="programCard">
+                    <div>${program.title}</div>
+                    <div>${program.startTime} - ${program.endTime}</div>
+                </div>
+            `;
+            
+        }).join('');
+
+        document.getElementById('infoAreaRow2').innerHTML = programCards;
+        console.log(programCards);
     },
 
 }
+
+
 
 document.getElementById("powerButton").addEventListener("click", () => {
     appState.togglePower();
@@ -211,7 +234,7 @@ document.getElementById("infoButton").addEventListener("click", (e) => {
     
     // console.log("click");
     // e.target.classList.toggle("hidden");
-    console.log(appState.power, appState.currentChannel)
+    // console.log(appState.power, appState.currentChannel)
     if(appState.power && appState.currentChannel) {
         
         appState.showMenu();
