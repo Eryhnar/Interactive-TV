@@ -62,10 +62,10 @@ const appState = {
             title: "Channel 1",
             programs: {
                 program1: {
-                    title: "Program 1",
+                    title: "The Good Place",
                     startTime: formatTime(new Date(new Date().getTime() - 10*60000)),
                     endTime: formatTime(new Date(new Date().getTime() + 45*60000)),
-                    description: "A show about stuff.",
+                    description: "Four people and their otherworldly frienemy struggle in the afterlife to define what it means to be good. Eleanor finds herself in the good place- heaven, created by the immortal architect Michael, but doesn't believe she belongs.",
                 },
                 program2: {
                     title: "Program 2",
@@ -88,10 +88,10 @@ const appState = {
             title: "Channel 2",
             programs: {
                 program1: {
-                    title: "Program 1",
+                    title: "Game of Thrones",
                     startTime: formatTime(new Date(new Date().getTime() - 10*60000)),
                     endTime: formatTime(new Date(new Date().getTime() + 45*60000)),
-                    description: "A show about stuff.",
+                    description: "Nine noble families fight for control over the lands of Westeros, while an ancient enemy returns after being dormant for a millennia.",
                 },
                 program2: {
                     title: "Program 2",
@@ -113,10 +113,10 @@ const appState = {
             title: "Channel 3",
             programs: {
                 program1: {
-                    title: "Program 1",
+                    title: "Friends",
                     startTime: formatTime(new Date(new Date().getTime() - 10*60000)),
                     endTime: formatTime(new Date(new Date().getTime() + 45*60000)),
-                    description: "A show about stuff.",
+                    description: "Friends follows the personal and professional lives of six twenty to thirty year-old friends living in the Manhattan borough of New York City.",
                 },
                 program2: {
                     title: "Program 2",
@@ -137,10 +137,10 @@ const appState = {
             title: "Channel 4",
             programs: {
                 program1: {
-                    title: "Program 1",
+                    title: "Westworld",
                     startTime: formatTime(new Date(new Date().getTime() - 10*60000)),
                     endTime: formatTime(new Date(new Date().getTime() + 45*60000)),
-                    description: "A show about stuff.",
+                    description: "At the intersection of the near future and the reimagined past, waits a world in which every human appetite can be indulged without consequence.",
                 },
                 program2: {
                     title: "Program 2",
@@ -161,10 +161,10 @@ const appState = {
             title: "Channel 5",
             programs: {
                 program1: {
-                    title: "Program 1",
+                    title: "Firefly",
                     startTime: formatTime(new Date(new Date().getTime() - 10*60000)),
                     endTime: formatTime(new Date(new Date().getTime() + 45*60000)),
-                    description: "A show about stuff.",
+                    description: "Five hundred years in the future, a renegade crew aboard a small spacecraft tries to survive as they travel the unknown parts of the galaxy and evade warring factions as well as authority agents out to get them.",
                 },
                 program2: {
                     title: "Program 2",
@@ -185,10 +185,10 @@ const appState = {
             title: "Channel 6",
             programs: {
                 program1: {
-                    title: "Program 1",
+                    title: "Chuck",
                     startTime: formatTime(new Date(new Date().getTime() - 10*60000)),
                     endTime: formatTime(new Date(new Date().getTime() + 45*60000)),
-                    description: "A show about stuff.",
+                    description: "When a computer geek inadvertently downloads critical government secrets into his brain, both the CIA and the NSA assign an agent to protect him and exploit his newfound skills.",
                 },
                 program2: {
                     title: "Program 2",
@@ -209,10 +209,10 @@ const appState = {
             title: "Channel 7",
             programs: {
                 program1: {
-                    title: "Program 1",
+                    title: "The Office (US)",
                     startTime: formatTime(new Date(new Date().getTime() - 10*60000)),
                     endTime: formatTime(new Date(new Date().getTime() + 45*60000)),
-                    description: "A show about stuff.",
+                    description: "A mockumentary on a group of typical office workers, where the workday consists of ego clashes, inappropriate behavior, and tedium.",
                 },
                 program2: {
                     title: "Program 2",
@@ -233,10 +233,10 @@ const appState = {
             title: "Channel 8",
             programs: {
                 program1: {
-                    title: "Program 1",
+                    title: "How I Met Your Mother",
                     startTime: formatTime(new Date(new Date().getTime() - 10*60000)),
                     endTime: formatTime(new Date(new Date().getTime() + 45*60000)),
-                    description: "A show about stuff.",
+                    description: "A father recounts to his children - through a series of flashbacks - the journey he and his four best friends took leading up to him meeting their mother.",
                 },
                 program2: {
                     title: "Program 2",
@@ -257,10 +257,10 @@ const appState = {
             title: "Channel 9",
             programs: {
                 program1: {
-                    title: "Program 1",
+                    title: "The Big Bang Theory",
                     startTime: formatTime(new Date(new Date().getTime() - 10*60000)),
                     endTime: formatTime(new Date(new Date().getTime() + 45*60000)),
-                    description: "A show about stuff.",
+                    description: "A woman who moves into an apartment across the hall from two brilliant but socially awkward physicists shows them how little they know about life outside of the laboratory.",
                 },
                 program2: {
                     title: "Program 2",
@@ -281,10 +281,10 @@ const appState = {
             title: "Channel 0",
             programs: {
                 program1: {
-                    title: "Program 1",
+                    title: "Breaking Bad",
                     startTime: formatTime(new Date(new Date().getTime() - 10*60000)),
                     endTime: formatTime(new Date(new Date().getTime() + 45*60000)),
-                    description: "A show about stuff.",
+                    description: "A chemistry teacher diagnosed with inoperable lung cancer turns to manufacturing and selling methamphetamine with a former student in order to secure his family's future.",
                 },
                 program2: {
                     title: "Program 2",
@@ -387,7 +387,8 @@ const appState = {
         document.getElementById("programInfoArea").classList.toggle("hidden");
         document.getElementById("channelIdArea").value = this.currentChannel;
         document.getElementById("channelIdArea").innerText = this.currentChannelId;
-        document.getElementById("timeTagArea").innerText = `${this.hour}:${this.minutes}`;
+        document.getElementById("timeTagArea").innerText = formatTime(this.date);
+        // document.getElementById("timeTagArea").innerText = `${this.hour}:${this.minutes}`;
         
         let currentPrograms = Object.values(this.channels[this.currentChannelId].programs);
 
@@ -405,6 +406,8 @@ const appState = {
 
         document.getElementById('infoAreaRow2').innerHTML = programCards;
         // console.log(programCards);
+
+        document.getElementById("descArea").innerText = currentPrograms[0].description; //this will need to be modified to show the current program
     },
 
 }
@@ -437,7 +440,10 @@ document.getElementById("powerButton").addEventListener("click", () => {
         // IMGSCREEN.src = "./img/off.jpg";
 
         OVERLAYS.map((overlay) => {overlay.classList.add("hidden");});
-        appState.mute();
+        
+        if (VIDSCREEN.muted) {
+            appState.mute();
+        }
     }
 });
 

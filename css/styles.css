@@ -294,7 +294,16 @@ body{
     border: #000 0.1em solid;
 }
 
+#descArea{
+    width: 65em;
+    height: 5em;
 
+    padding: 0.5em;
+
+    color: black;
+
+    
+}
 
 
 
