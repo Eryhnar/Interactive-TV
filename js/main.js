@@ -7,6 +7,10 @@ const OVERLAYS = Array.from(document.getElementsByClassName("overlay"));
 
 let DATE = new Date();
 
+let volumeDisplayTimeout;
+
+
+// this should probably be in appState
 const numBtns = [
     document.getElementById("button1"),
     document.getElementById("button2"),
@@ -36,7 +40,7 @@ const appState = {
 
     power: false,
 
-    volume: 0,
+    volume: 100,
 
     currentChannelId: null,
 
@@ -340,20 +344,38 @@ const appState = {
     channelDown: function() {
         let channelKeys = Object.keys(this.channels);
         let currentIndex = channelKeys.indexOf(this.currentChannelId);
-        let nextIndex = currentIndex === 0 ? channelKeys.length : currentIndex - 1;
+        let nextIndex = currentIndex === 0 ? channelKeys.length - 1 : currentIndex - 1;
         channel = channelKeys[nextIndex];
         this.changeChannel(channel);
     },
 
     volumeUp: function() {
-        if (this.volume < 100) {
+        if (this.power && this.volume < 100) {
+
+            clearTimeout(volumeDisplayTimeout);
             this.volume += 10;
+            VIDSCREEN.volume = this.volume / 100;
+            document.getElementById("volumeDisplay").classList.remove("hidden");
+            document.getElementById("volumeLevel").style.height = `${this.volume}%`;
+            volumeDisplayTimeout = setTimeout(() => {
+                volumeDisplay.classList.add("hidden");
+            }, 3000);
+
         }
     },
 
     volumeDown: function() {
-        if (this.volume > 0) {
+        if (this.power && this.volume > 0) {
+
+            clearTimeout(volumeDisplayTimeout);
             this.volume -= 10;
+            VIDSCREEN.volume = this.volume / 100;
+            document.getElementById("volumeDisplay").classList.remove("hidden");
+            document.getElementById("volumeLevel").style.height = `${this.volume}%`;
+            volumeDisplayTimeout = setTimeout(() => {
+                volumeDisplay.classList.add("hidden");
+            }, 3000);
+
         }
     },
 
