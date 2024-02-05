@@ -54,7 +54,7 @@ const appState = {
 
     channels: {
         channel1: {
-            src: "./img/channel1.jpg",
+            src: "./mov/channel1.webm",
             title: "Channel 1",
             programs: {
                 program1: {
@@ -80,7 +80,7 @@ const appState = {
 
         },
         channel2: {
-            src: "./img/channel2.jpg",
+            src: "./mov/channel2.webm",
             title: "Channel 2",
             programs: {
                 program1: {
@@ -105,7 +105,7 @@ const appState = {
         },
         // channel2: "./img/channel2.jpg",
         channel3: {
-            src: "./img/channel3.jpg",
+            src: "./mov/channel3.webm",
             title: "Channel 3",
             programs: {
                 program1: {
@@ -129,7 +129,7 @@ const appState = {
             },
         },
         channel4: {
-            src: "./img/channel4.jpg",
+            src: "./mov/channel4.webm",
             title: "Channel 4",
             programs: {
                 program1: {
@@ -153,7 +153,7 @@ const appState = {
             },
         },
         channel5: {
-            src: "./img/channel5.jpg",
+            src: "./mov/channel5.webm",
             title: "Channel 5",
             programs: {
                 program1: {
@@ -177,7 +177,7 @@ const appState = {
             },
         },
         channel6: {
-            src: "./img/channel6.jpg",
+            src: "./mov/channel6.webm",
             title: "Channel 6",
             programs: {
                 program1: {
@@ -201,7 +201,7 @@ const appState = {
             },
         },
         channel7: {
-            src: "./img/channel7.jpg",
+            src: "./mov/channel7.webm",
             title: "Channel 7",
             programs: {
                 program1: {
@@ -225,7 +225,7 @@ const appState = {
             },
         },
         channel8: {
-            src: "./img/channel8.jpg",
+            src: "./mov/channel8.webm",
             title: "Channel 8",
             programs: {
                 program1: {
@@ -249,7 +249,7 @@ const appState = {
             },
         },
         channel9: {
-            src: "./img/channel9.jpg",
+            src: "./mov/channel9.webm",
             title: "Channel 9",
             programs: {
                 program1: {
@@ -273,7 +273,7 @@ const appState = {
             },
         },
         channel0: {
-            src: "./img/channel0.jpg",
+            src: "./mov/channel0.webm",
             title: "Channel 0",
             programs: {
                 program1: {
@@ -311,15 +311,16 @@ const appState = {
 
 
             
-            console.log(this.previousChannelId)
-            console.log(channel)
+            // console.log(this.previousChannelId)
+            // console.log(channel)
             if (this.currentChannelId !== channel) {
                 this.previousChannel = this.currentChannel;
                 this.previousChannelId = this.currentChannelId;
                 this.currentChannelId = channel;
-                this.currentChannel = `./mov/${channel}.webm`;
+                this.currentChannel = this.channels[channel].src;
             }
-            VIDSCREEN.src = `./mov/${channel}.webm`;
+            VIDSCREEN.src = this.channels[channel].src;
+            // console.log(this.channels[channel].src)
 
         }
     },
@@ -357,10 +358,10 @@ const appState = {
     },
 
     mute: function() {
-        this.volume = 0;
+        VIDSCREEN.muted = !VIDSCREEN.muted;
     },
 
-    showMenu: function() {
+    showInfo: function() {
         document.getElementById("programInfoArea").classList.toggle("hidden");
         document.getElementById("channelIdArea").value = this.currentChannel;
         document.getElementById("channelIdArea").innerText = this.currentChannelId;
@@ -414,6 +415,7 @@ document.getElementById("powerButton").addEventListener("click", () => {
         // IMGSCREEN.src = "./img/off.jpg";
 
         OVERLAYS.map((overlay) => {overlay.classList.add("hidden");});
+        appState.mute();
     }
 });
 
@@ -466,7 +468,7 @@ document.getElementById("infoButton").addEventListener("click", (e) => {
     // console.log(appState.power, appState.currentChannel)
     if(appState.power && appState.currentChannel) {
         
-        appState.showMenu();
+        appState.showInfo();
 
     }
 
