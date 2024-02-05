@@ -305,6 +305,16 @@ body{
     
 }
 
+#menuArea{
+    width: 20em;
+    height: calc((9 / 16) * 65em);
+
+    position: absolute;
+    top: 0;
+    left: 45em;
+
+    background-color: blue;
+}
 
 
 
