@@ -309,16 +309,15 @@ const appState = {
     changeChannel: function(channel) {
         if (this.power) {
 
-            if (this.previousChannel) {
+
+            
+            console.log(this.previousChannelId)
+            console.log(channel)
+            if (this.currentChannelId !== channel) {
                 this.previousChannel = this.currentChannel;
                 this.previousChannelId = this.currentChannelId;
-                this.currentChannel = `./mov/${channel}.webm`;
                 this.currentChannelId = channel;
-            } else {
-                this.previousChannel = `./mov/${channel}.webm`;
-                this.previousChannelId = channel;
                 this.currentChannel = `./mov/${channel}.webm`;
-                this.currentChannelId = channel;
             }
             VIDSCREEN.src = `./mov/${channel}.webm`;
 
@@ -439,9 +438,14 @@ document.getElementById("muteButton").addEventListener("click", () => {
 document.getElementById("backChannelButton").addEventListener("click", () => {
     if (appState.power) {
         if (appState.previousChannel) {
-            appState.currentChannel = SCREEN.src;           
-            SCREEN.src = appState.previousChannel;
-            appState.previousChannel = appState.currentChannel;
+            let tempChannel = appState.currentChannel; 
+            // console.log(appState.previousChannel);
+            // console.log(tempChannel);
+            appState.currentChannel = appState.previousChannel; 
+            // console.log(appState.currentChannel);
+            appState.previousChannel = tempChannel; 
+            // console.log(appState.previousChannel);
+            VIDSCREEN.src = appState.currentChannel; 
         }
     }
 });
