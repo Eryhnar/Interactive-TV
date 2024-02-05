@@ -12,18 +12,18 @@ let volumeDisplayTimeout;
 
 // this should probably be in appState
 const numBtns = [
-    document.getElementById("button1"),
-    document.getElementById("button2"),
-    document.getElementById("button3"),
-    document.getElementById("button4"),
-    document.getElementById("button5"),
-    document.getElementById("button6"),
-    document.getElementById("button7"),
-    document.getElementById("button8"),
-    document.getElementById("button9"),
-    document.getElementById("button0"),
+    document.getElementsByClassName("button1"),
+    document.getElementsByClassName("button2"),
+    document.getElementsByClassName("button3"),
+    document.getElementsByClassName("button4"),
+    document.getElementsByClassName("button5"),
+    document.getElementsByClassName("button6"),
+    document.getElementsByClassName("button7"),
+    document.getElementsByClassName("button8"),
+    document.getElementsByClassName("button9"),
+    document.getElementsByClassName("button0"),
   ];
-
+// console.log(numBtns);
 function formatTime(time) {
     let hours = time.getHours();
     let minutes = time.getMinutes();
@@ -300,14 +300,6 @@ const appState = {
                 },
             },
         },
-        // channel3: "./img/channel3.jpg",
-        // channel4: "./img/channel4.jpg",
-        // channel5: "./img/channel5.jpg",
-        // channel6: "./img/channel6.jpg",
-        // channel7: "./img/channel7.jpg",
-        // channel8: "./img/channel8.jpg",
-        // channel9: "./img/channel9.jpg",
-        // channel0: "./img/channel0.jpg",
     },
 
     changeChannel: function(channel) {
@@ -410,10 +402,43 @@ const appState = {
         document.getElementById("descArea").innerText = currentPrograms[0].description; //this will need to be modified to show the current program
     },
 
+    showMenu: function() {
+        document.getElementById("menuArea").classList.toggle("hidden");
+        
+    },
+
+
 }
 
+let channels = Object.keys(appState.channels);
 
-// need to fix this mess
+
+channels.map((channel) => {
+    let keys = Object.keys(appState.channels);
+    let index = keys.indexOf(channel)
+    let newIndex = index == 9 ? 0 : index+1;
+    // let index = keys.indexOf(channel); 
+    // console.log(index);
+    document.getElementById("menuArea").innerHTML += `<div class="button${newIndex}" id="${channel}">${appState.channels[channel].title}</div>`;
+    // console.log(channel);
+    // console.log(appState.channels[channel].title);
+    console.log(document.getElementById(channel).classList)
+});
+
+numBtns.forEach((btnCollection) => {
+    Array.from(btnCollection).forEach((btn) => {
+        btn.addEventListener("click", (e) => {
+            let buttonClass = Array.from(e.target.classList).find(cls => cls.startsWith('button') && cls.length > 6);
+            buttonNumber = buttonClass.slice(-1);
+            // let buttonNumber = e.target.id.slice(-1);
+            let channel = `channel${buttonNumber}`;
+            appState.changeChannel(channel);
+        });
+    });
+});
+
+
+// need to fix this mess. Maybe migrate to appState.togglePower
 document.getElementById("powerButton").addEventListener("click", () => {
     appState.togglePower();
     if (appState.power) {
@@ -448,15 +473,16 @@ document.getElementById("powerButton").addEventListener("click", () => {
 });
 
 
-numBtns.map((btn) => {
+
+// numBtns.map((btn) => {
     
-    btn.addEventListener("click", (e) => {
-        buttonNumber = e.target.id.slice(-1);
-        channel = `channel${buttonNumber}`
-        appState.changeChannel(channel);
-    });
+//     btn.addEventListener("click", (e) => {
+//         buttonNumber = e.target.id.slice(-1);
+//         channel = `channel${buttonNumber}`
+//         appState.changeChannel(channel);
+//     });
     
-});
+// });
 
 document.getElementById("muteButton").addEventListener("click", () => {
     if (appState.power) {
@@ -500,4 +526,10 @@ document.getElementById("infoButton").addEventListener("click", (e) => {
 
     }
 
+});
+
+document.getElementById("menuButton").addEventListener("click", (e) => {
+    if(appState.power) {
+        appState.showMenu();
+    }
 });

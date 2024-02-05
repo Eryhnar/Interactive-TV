@@ -479,6 +479,10 @@ body{
     height: 15em;
 }     */
 
+#menuButton{
+    color: white;
+}
+
 #volButton{
     background-color: #1f1f1f;
 
