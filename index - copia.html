@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive TV</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link type="text/css" rel="stylesheet" href="./css/styles.css">
+</head>
+<body>
+    <!-- <div class="row container-fluid bg-black h-100">hi</div> -->
+    <div class="row container-fluid" id="displayArea"> <!-- this is potentially refactorable into the child row -->
+        <!-- <div class="row h-100"> -->
+            <div class="col-9" id="tvArea"> <!-- tv area or frame idk yet -->
+                <div class="row h-100 w-100 d-flex justify-content-center align-items-center">
+                    <div class="col-12" id="tvTop">
+                        <div class="row h-100 w-100 bg-warning">
+                            <div class="col-12" id="tvFrame">
+                                <div class="row h-100 w-100 d-flex justify-content-center align-items-center">
+                                    <div class="col-12" id="tvScreenArea">
+                                        <img src="./img/off.jpg" alt="" id="tvScreenOff">
+                                        <video src="./mov/default.mp4" id="tvScreen" class="hidden" autoplay loop></video>
+                                        <div id="volumeDisplay" class="overlay hidden">
+                                            <div id="volUpLabel">UP</div>
+                                            <div id="volumeBar">
+                                                <div id="volumeLevel">
+                                                    
+                                                </div>
+                                            </div>
+                                            <div id="volDownLabel">DOWN</div>
+                                        </div>
+                                        <div id="muteArea" class="hidden overlay">
+                                            <img src="./img/mute.jpg" alt="">
+                                        </div>
+                                        <div id="programInfoArea" class="hidden overlay">
+                                            <div id="infoAreaRow1">
+                                                <div id="channelIdArea"></div>
+                                                <div id="timeTagArea"></div>
+
+                                            </div>
+                                            <div id="infoAreaRow2">
+                                                
+                                            </div>
+                                            
+                                            <div id="descArea">
+
+                                            </div>
+                                        </div>
+                                        <div id="menuArea" class="hidden overlay">
+                                            
+                                        </div>
+                                    </div>
+                                    <div id="pilotLight" class="pilotLightOff"></div>
+                                    <div id="brandLogo">Sungsam</div>
+                                    <!-- <div class="row w-100">
+                                        <div class="col-6" id="pilotLight">                                        
+                                        </div>
+                                        <div class="col-6" id="brandLogo">
+                                            Sungsam
+                                        </div>
+                                    </div> -->
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12" id="tvBottom">
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="col-3 bg-warning h-100" id="remoteArea">
+                <div class="row h-100 w-100 d-flex justify-content-center align-items-center">
+                    <div class="col-8 offset-1" id="remoteBody">
+                        <div id="test">
+                            <div class="button" id="navUpButton"></div>
+                            <div class="button" id="navRightButton"></div>
+                            <div class="button" id="navDownButton"></div>
+                            <div class="button" id="navLeftButton"></div>
+                        </div>
+                        <div class="button" id="powerButton"><img src="./img/power.png" alt=""></div>
+                        <div class="button" id="menuButton">menu</div>
+                        <div class="button" id="srcButton"></div>
+                        <div class="button" id="infoButton">info</div>
+                        <!-- <div class="button" id="navUpButton"></div>
+                        <div class="button" id="navRightButton"></div>
+                        <div class="button" id="navDownButton"></div>
+                        <div class="button" id="navLeftButton"></div> -->
+                        <div class="button" id="okButton"></div>
+                        <div class="button" id="volButton">
+                            <div id="volUpButton"><img src="./img/up.png" alt=""></div>
+                            <div id="volButtonLabel">Vol</div>
+                            <div id="volDownButton"><img src="./img/down.png" alt=""></div>
+                        </div>
+                        <div class="button" id="muteButton">M</div>
+                        <div class="button" id="channelButton">
+                            <div id="channelUpButton"><img src="./img/up.png" alt=""></div>
+                            <div id="channelButtonLabel">Ch</div>
+                            <div id="channelDownButton"><img src="./img/down.png" alt=""></div>
+                        </div>
+                        <div class="button" id="backChannelButton"><img src="./img/backButton.png" alt=""></div>
+                        <div class="button button1" id="button1">1</div>
+                        <div class="button button2" id="button2">2</div>
+                        <div class="button button3" id="button3">3</div>
+                        <div class="button button4" id="button4">4</div>
+                        <div class="button button5" id="button5">5</div>
+                        <div class="button button6" id="button6">6</div>
+                        <div class="button button7" id="button7">7</div>
+                        <div class="button button8" id="button8">8</div>
+                        <div class="button button9" id="button9">9</div>
+                        <div class="button button0" id="button0">0</div>
+                        <!-- <div class="button" id="button1">1</div>
+                        <div class="button" id="button2">2</div>
+                        <div class="button" id="button3">3</div>
+                        <div class="button" id="button4">4</div>
+                        <div class="button" id="button5">5</div>
+                        <div class="button" id="button6">6</div>
+                        <div class="button" id="button7">7</div>
+                        <div class="button" id="button8">8</div>
+                        <div class="button" id="button9">9</div>
+                        <div class="button" id="button0">0</div> -->
+                    </div>
+                </div>
+            </div>
+        <!-- </div> -->
+    </div>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="./js/main.js"></script>
+</body>
+</html>

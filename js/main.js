@@ -475,10 +475,10 @@ document.getElementById("powerButton").addEventListener("click", () => {
     if (appState.power) {
         document.getElementById("pilotLight").classList.remove("pilotLightOff");//add to togglePower
         document.getElementById("pilotLight").classList.add("pilotLightOn");//add to togglePower
-            if (appState.previousChannel) {
+            if (appState.currentChannel) {
                 document.getElementById("tvScreenOff").classList.add("hidden");
                 document.getElementById("tvScreen").classList.remove("hidden");
-                VIDSCREEN.src = appState.previousChannel;
+                VIDSCREEN.src = appState.currentChannel;
             } else {
                 document.getElementById("tvScreenOff").classList.add("hidden");
                 document.getElementById("tvScreen").classList.remove("hidden");
@@ -488,7 +488,7 @@ document.getElementById("powerButton").addEventListener("click", () => {
         document.getElementById("pilotLight").classList.remove("pilotLightOn");//add to togglePower
         document.getElementById("pilotLight").classList.add("pilotLightOff");//add to togglePower
         
-        appState.previousChannel = VIDSCREEN.src;
+        // appState.previousChannel = VIDSCREEN.src;
         
         document.getElementById("tvScreen").classList.add("hidden");
         document.getElementById("tvScreen").pause();
