@@ -317,7 +317,9 @@ const appState = {
             }
             VIDSCREEN.src = this.channels[channel].src;
             // console.log(this.channels[channel].src)
-
+            if (!document.getElementById("programInfoArea").classList.contains("hidden")) {
+                this.showInfo(true); //this is probably not the best way to do this
+            }
         }
     },
 
@@ -329,7 +331,7 @@ const appState = {
         let channelKeys = Object.keys(this.channels);
         let currentIndex = channelKeys.indexOf(this.currentChannelId);
         let nextIndex = currentIndex === channelKeys.length - 1 ? 0 : currentIndex + 1;
-        channel = channelKeys[nextIndex];
+        let channel = channelKeys[nextIndex];// changed channel to let channel. I do not know why it was working before.
         this.changeChannel(channel);
     },
 
@@ -337,21 +339,33 @@ const appState = {
         let channelKeys = Object.keys(this.channels);
         let currentIndex = channelKeys.indexOf(this.currentChannelId);
         let nextIndex = currentIndex === 0 ? channelKeys.length - 1 : currentIndex - 1;
-        channel = channelKeys[nextIndex];
+        let channel = channelKeys[nextIndex];// changed channel to let channel. I do not know why it was working before.
         this.changeChannel(channel);
     },
 
     volumeUp: function() {
         if (this.power && this.volume < 100) {
 
-            clearTimeout(volumeDisplayTimeout);
-            this.volume += 10;
-            VIDSCREEN.volume = this.volume / 100;
-            document.getElementById("volumeDisplay").classList.remove("hidden");
-            document.getElementById("volumeLevel").style.height = `${this.volume}%`;
-            volumeDisplayTimeout = setTimeout(() => {
-                volumeDisplay.classList.add("hidden");
-            }, 3000);
+            if (VIDSCREEN.muted) {
+                this.mute();
+                clearTimeout(volumeDisplayTimeout);
+                this.volume += 10;
+                VIDSCREEN.volume = this.volume / 100;
+                document.getElementById("volumeDisplay").classList.remove("hidden");
+                document.getElementById("volumeLevel").style.height = `${this.volume}%`;
+                volumeDisplayTimeout = setTimeout(() => {
+                    volumeDisplay.classList.add("hidden");
+                }, 3000);
+            } else {
+                clearTimeout(volumeDisplayTimeout);
+                this.volume += 10;
+                VIDSCREEN.volume = this.volume / 100;
+                document.getElementById("volumeDisplay").classList.remove("hidden");
+                document.getElementById("volumeLevel").style.height = `${this.volume}%`;
+                volumeDisplayTimeout = setTimeout(() => {
+                    volumeDisplay.classList.add("hidden");
+                }, 3000);
+            }
 
         }
     },
@@ -359,24 +373,41 @@ const appState = {
     volumeDown: function() {
         if (this.power && this.volume > 0) {
 
-            clearTimeout(volumeDisplayTimeout);
-            this.volume -= 10;
-            VIDSCREEN.volume = this.volume / 100;
-            document.getElementById("volumeDisplay").classList.remove("hidden");
-            document.getElementById("volumeLevel").style.height = `${this.volume}%`;
-            volumeDisplayTimeout = setTimeout(() => {
-                volumeDisplay.classList.add("hidden");
-            }, 3000);
+            if (VIDSCREEN.muted) {
+                this.mute();
+                clearTimeout(volumeDisplayTimeout);
+                this.volume -= 10;
+                VIDSCREEN.volume = this.volume / 100;
+                document.getElementById("volumeDisplay").classList.remove("hidden");
+                document.getElementById("volumeLevel").style.height = `${this.volume}%`;
+                volumeDisplayTimeout = setTimeout(() => {
+                    volumeDisplay.classList.add("hidden");
+                }, 3000);
+            } else {
+                clearTimeout(volumeDisplayTimeout);
+                this.volume -= 10;
+                VIDSCREEN.volume = this.volume / 100;
+                document.getElementById("volumeDisplay").classList.remove("hidden");
+                document.getElementById("volumeLevel").style.height = `${this.volume}%`;
+                volumeDisplayTimeout = setTimeout(() => {
+                    volumeDisplay.classList.add("hidden");
+                }, 3000);
+            }
 
         }
     },
 
     mute: function() {
         VIDSCREEN.muted = !VIDSCREEN.muted;
+        document.getElementById("muteArea").classList.toggle("hidden");
     },
 
-    showInfo: function() {
-        document.getElementById("programInfoArea").classList.toggle("hidden");
+    showInfo: function(bool) {
+
+        if (!bool) {
+            document.getElementById("programInfoArea").classList.toggle("hidden");
+        }
+        // document.getElementById("programInfoArea").classList.toggle("hidden");
         document.getElementById("channelIdArea").value = this.currentChannel;
         document.getElementById("channelIdArea").innerText = this.currentChannelId;
         document.getElementById("timeTagArea").innerText = formatTime(this.date);
@@ -486,8 +517,9 @@ document.getElementById("powerButton").addEventListener("click", () => {
 
 document.getElementById("muteButton").addEventListener("click", () => {
     if (appState.power) {
-        document.getElementById("muteArea").classList.toggle("hidden");
+        
         appState.mute();
+
     }
 });
 
