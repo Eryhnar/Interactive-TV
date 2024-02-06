@@ -422,7 +422,7 @@ channels.map((channel) => {
     document.getElementById("menuArea").innerHTML += `<div class="button${newIndex}" id="${channel}">${appState.channels[channel].title}</div>`;
     // console.log(channel);
     // console.log(appState.channels[channel].title);
-    console.log(document.getElementById(channel).classList)
+    // console.log(document.getElementById(channel).classList)
 });
 
 numBtns.forEach((btnCollection) => {

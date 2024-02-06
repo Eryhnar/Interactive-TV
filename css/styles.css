@@ -371,6 +371,10 @@ body{
     box-shadow: 0 0.5em;
 }
 
+.button:hover{
+    cursor: pointer;
+}
+
 .button:active{
     transform: translateY(0.5em);
     box-shadow: none;
