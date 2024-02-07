@@ -19,7 +19,6 @@ body{
     gap: 10%;
     margin-inline: auto;
 
-    border: 1px solid red;
     container-type: inline-size;
 }
 
