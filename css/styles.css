@@ -1,74 +1,47 @@
-/* *{
+* {
     box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-} */
+}
 
 body{
     margin: 0;
     padding: 0;
-    max-width: 100vw;
-    max-height: 100vh;
 }
 
-#displayArea{
-    width: 100vw;
-    height: 100vh;
-    background-color: #000;
-    margin: 0;
-    /* display: flex; */
-    /* justify-content: center;
-    align-items: center; */
-    /* flex-direction: row; */
-
+/* make this disappear on small */
+#topArea{ 
+    min-height: 5svh;
 }
 
-#tvArea{
-    /* margin-top: 10em;
-    margin-bottom: 10em;
-    margin-left: 5em;
-    margin-right: 5em; */
-    /* width: 80%;
-    height: 80%; */
-    /* width: 100%;
-    height: 100%; */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: aqua;
-}
+#mainRow{
+    display: grid;
+    max-width: 85vw;
+    grid-template-columns: 5fr 1fr;
+    gap: 10%;
+    margin-inline: auto;
 
-#tvTop{
-
-    width: 80%;
-    height: 70%;
-    background-color: lightgreen;
-    margin-top: 5em;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 0;
+    border: 1px solid red;
+    container-type: inline-size;
 }
 
 #tvFrame{
-    width: 100%;
-    height: 100%;
+    width: 67em;
+    height: calc((9 / 16) * 72em);
+    padding: 1em;
+    padding-bottom: 4em;
     background-color: #3b3b3b;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
+    
+    position: relative; 
+
+    font-size: clamp(0.7rem, 1cqi, 1.2rem);
 }
 
 #pilotLight{
     position: absolute;
-    top: 94%;
+    top: 95%;
     left: 92%;
     width: 1em;
-    height: 1.5em;
+    height: 1em;
     border-radius: 100%;
-    /* background-color: red; */
 }
 
 .pilotLightOn{
@@ -81,31 +54,27 @@ body{
 
 #brandLogo{
     position: absolute;
-    top: 94%;
+    top: 93.75%;
     left: 50%;
-    width: 5em;
-    height: 2em;
-    border-radius: 100%;
-    background-color: rgb(146, 146, 146);
     color: rgb(224, 217, 217);
     display: flex;
     justify-content: center;
     align-items: center;
 
+    font-size: 1.2em;
+    font-weight: bold;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+
 }
 
 #tvScreenArea{
-    /* width: 85%;
-    height: 85%; */
-    width: 65em; /* should try 70em */
+    
+    width: 65em; 
     height: 0;
-    padding-bottom: calc((9 / 16) * 65em); 
+    padding-bottom: calc((9 / 16) * 65em);
     background-color: blue;
     position: relative;
 
-    /* display: flex;
-    justify-content: center;
-    align-items: center; */
 
     overflow: hidden;
 
@@ -125,17 +94,19 @@ body{
     left: 0;
 }
 
-/* #tvScreenArea video { can me removed
-    position: absolute;
-    object-fit: cover;
-    width: 100%;
-    height: 100%;
-} */
-
 #volumeDisplay{
     position: absolute;
     top: 5em;
     left: 1em;
+
+    color: white;
+    font-weight: lighter;
+    font-size: 0.8em;
+
+    display: flex;
+    flex-direction: column;
+    margin-left: 1.5em;
+
 }
 
 #volumeBar{
@@ -150,8 +121,8 @@ body{
 
 #volumeLevel{
     background-color: green;
-    width: 100%;
-    height: 100%;
+    width: 1.5em;
+    height: 10em;
 
 }
 
@@ -159,17 +130,12 @@ body{
 #muteArea{
     width: 3em; 
     height: 3em;
-    
-    /* display: flex;
-    justify-content: center;
-    align-items: center; */
 
     position: absolute;
 
     top: 1em;
     right: 1em;
 
-    /* background-color: #c41f1f; */
     background-color: #c5c5c5;
     opacity: 50%;
 }
@@ -184,20 +150,15 @@ body{
 }
 
 #programInfoArea{
-    width: 65em; 
+    width: 65em;
     height: 10em;
-    
-    /* display: flex;
-    justify-content: center;
-    align-items: center; */
 
     position: absolute;
 
     top: calc(100% - 10em);
     left: 0em;
 
-    /* background-color: #c41f1f; */
-    background-color: #3d1cb8;
+    background-color: black;
     opacity: 80%;
 
     display: flex;
@@ -228,7 +189,6 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    /* color: black; */
 }
 
 #timeTagArea{
@@ -242,27 +202,23 @@ body{
     align-items: center;
 }
 
-#infoAreaRow2{
+#infoAreaRow2{ /*add */
     width: 65em;
     height: 4em;
 
     display: flex;
     flex-direction: row;
-    /* justify-content: space-evenly; */
     align-items: flex-start;
 
-    padding: 0.5em;
+    /* padding: 0.5em; */
     padding-left: 2em;
     padding-right: 2em;
-    /* padding: 1em;
-    padding-left: 2em;
-    padding-right: 2em; */
 
     background-color: black;
 }
 
 .programCard{
-    background-color: yellow;
+    /* background-color: yellow; */
 
     display: flex;
     flex-direction: column;
@@ -279,12 +235,12 @@ body{
     max-width: 5em;
 
     border: #000 0.1em solid;
+
+    font-size: 0.8em;
 }
 
 .programTime{
     background-color: white;
-
-    /* max-width: 5em; */
 
     font-size: 0.8em;
 
@@ -300,7 +256,8 @@ body{
 
     padding: 0.5em;
 
-    color: black;
+    color: white;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 
     
 }
@@ -313,22 +270,25 @@ body{
     top: 0;
     left: 45em;
 
-    background-color: blue;
+    background-color: black;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
+#menuButtonsArea{
+    color: white;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2em;
+}
 
-
-/* #tvScreen{
-    width: 100%;
-    height: 100%;
-    
-    position: absolute;
-
-    overflow: hidden;
-
-} */
-
-
+.bg-white{
+    color: black;
+    background-color: white;
+    padding: 0.5em;
+}
 
 #tvBottom{
     width: 80%;
@@ -339,14 +299,8 @@ body{
 
 
 
-#remoteArea{
-    margin: 0;
-    /* padding: 0; */
-}
-
 #remoteBody{
-    /* width: 100%; */
-    height: 80%;
+    height: 100%;
 
     width: 20em;
 
@@ -356,6 +310,8 @@ body{
     border-radius: 2em;
     
     position: relative;
+
+    font-size: clamp(0.7rem, 1cqi, 1.2rem);
 }
 
 .button{
@@ -395,11 +351,28 @@ body{
     height: 80%;
 }
 
+#remoteLight{
+    position: absolute;
+    top: 2em;
+    left: 9.5em;
+    width: 1em;
+    height: 1em;
+    border-radius: 100%;
+
+}
+
+.remoteLightOn{
+    background-color: green;
+}
+
+.remoteLightOff{
+    background-color: red;
+}
+
 #menuButton{
     background-color: #1f1f1f;
 
     top: 2.5em;
-    /* left: 15em; */
     right: 2em;
 
     width: 3em;
@@ -421,7 +394,6 @@ body{
     color: white;
 
     top: 6em;
-    /* left: 15em; */
     right: 2em;
 
     width: 3em;
@@ -432,56 +404,112 @@ body{
 
 #test{
     position: relative;
-    background-color: #c4c4c4;
 
-    top: 11em;
-    left: 3.25em;
+    top: 9em;
+    left: 5em;
 
-    width: 12em;
-    height: 12em;
+    width: 10em;
+    height: 10em;
     border-radius: 100em;
 }
 
-/* #navUpButton{
-    background-color: #1f1f1f;
+#navUpButtonHolder{
+    top: 0em;
+    left: 3.5em;
 
-    top: 10em;
-    left: 2.5em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-    width: 15em;
-    height: 4em;
+    background-color: #c4c4c4;
+    border-radius: 100%;
 }
 
-#navRightButton{
-    background-color: #1f1f1f;
-
-    top: 14em;
-    right: 2.5em;
-
-    width: 4em;
-    height: 15em;
-}     */
-
-
-/* #navUpButton{
-    background-color: #1f1f1f;
+ #navUpButton{
 
     top: 0em;
-    left: 0em;
+    left: 3.5em;
+    border-left: 1.3em solid transparent;
+    border-right: 1.3em solid transparent;
+    border-bottom: 1.9em solid #1f1f1f;
+    
 
-    width: 15em;
-    height: 4em;
+}
+
+#navDownButtonHolder{
+    top: 7em;
+    left: 3.5em;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: #c4c4c4;
+    border-radius: 100%;
+
+}
+
+#navDownButton{
+
+    top: 7em;
+    left: 3.5em;
+   
+    border-left: 1.3em solid transparent;
+    border-right: 1.3em solid transparent;
+    border-top: 1.9em solid #1f1f1f;
+      
+}
+
+#navRightButtonHolder{
+    top: 3.5em;
+    left: 7em;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: #c4c4c4;
+    border-radius: 100%;
 }
 
 #navRightButton{
-    background-color: #1f1f1f;
 
-    top: 5em;
-    right: 0em;
+    border-left: 1.9em solid #1f1f1f;
+    border-top: 1.3em solid transparent;
+    border-bottom: 1.3em solid transparent;
 
-    width: 4em;
-    height: 15em;
-}     */
+}
+
+#navLeftButtonHolder{
+    top: 3.5em;
+    left: 0em;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: #c4c4c4;
+    border-radius: 100%;
+}
+
+#navLeftButton{
+    border-top: 1.3em solid transparent;
+    border-bottom: 1.3em solid transparent;
+    border-right: 1.9em solid #1f1f1f;
+}
+
+
+
+#okButton{
+    background-color: #c4c4c4;
+    color: #1f1f1f;
+    font-weight: bold;
+
+    top: 3.5em;
+    left: 3.5em;
+
+    border-radius: 100%;
+}
 
 #menuButton{
     color: white;
@@ -552,11 +580,7 @@ body{
 #volUpButton{
     color: white;
 
-    padding: 0.5em;   
-    /* width: 3em;
-    height: 3em; */
-
-    /* border-radius: 100%; */
+    padding: 0.5em;
 }
 
 #volUpButton img {
@@ -569,22 +593,12 @@ body{
     color: white;
 
     padding: 0.5em;
-
-    /* width: 3em;
-    height: 3em; */
-
-    /* border-radius: 100%; */
 }
 
 #volDownButton{
     color: white;
 
     padding: 0.5em;
-
-    /* width: 3em;
-    height: 3em; */
-
-    /* border-radius: 100%; */
 }
 
 #volDownButton img {
@@ -613,11 +627,7 @@ body{
 #channelUpButton{
     color: white;
 
-    padding: 0.5em;   
-    /* width: 3em;
-    height: 3em; */
-
-    /* border-radius: 100%; */
+    padding: 0.5em;
 }
 
 #channelUpButton img {
@@ -630,22 +640,12 @@ body{
     color: white;
 
     padding: 0.5em;
-
-    /* width: 3em;
-    height: 3em; */
-
-    /* border-radius: 100%; */
 }
 
 #channelDownButton{
     color: white;
 
     padding: 0.5em;
-
-    /* width: 3em;
-    height: 3em; */
-
-    /* border-radius: 100%; */
 }
 
 #channelDownButton img {
@@ -782,5 +782,38 @@ body{
 
 
 .hidden{
-    display: none !important;
+    display: none !important; /*  neeeded since the other display settings are ids */
 }
+
+/* force landscape mode */
+ @media screen and (orientation: portrait) {
+   
+    
+    #mainRow {
+        transform: rotate(-90deg);
+        width: 100vh;
+        height: 100vw;
+        position: absolute;
+        bottom: 0%;
+        left: 0%;
+        gap: 0;
+        margin: 0;
+    }
+    #topArea, #bottomArea {
+        display: none;
+        min-height: 0;
+    }
+  }
+  
+  /* @media screen and (max-height: 600px) {
+    #topArea, #bottomArea {
+      display: none;
+    }
+  
+    #mainRow {
+      gap: 0;
+      margin: 0;
+      padding: 0;
+      margin-inline: 0;
+    }
+  }  */
