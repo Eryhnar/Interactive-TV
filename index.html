@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Interactive TV</title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous"> -->
     <link type="text/css" rel="stylesheet" href="./css/styles.css">
 </head>
 <body>
@@ -18,7 +18,7 @@
                 
                 <video src="./mov/default.mp4" id="tvScreen" class="hidden" autoplay loop></video>
                 
-                <div id="volumeDisplay" class="overlay hidden">
+                <div id="volumeDisplay" class="hidden overlay"> 
                     <div id="volUpLabel">UP</div>
                     <div id="volumeBar">
                         <div id="volumeLevel"></div>
@@ -26,11 +26,11 @@
                     <div id="volDownLabel">DOWN</div>
                 </div>
 
-                <div id="muteArea" class="hidden overlay">
+                <div id="muteArea" class="hidden overlay"> 
                     <img src="./img/mute.jpg" alt="">
                 </div>
 
-                <div id="programInfoArea" class="hidden overlay">
+                <div id="programInfoArea" class="hidden overlay"> 
                     <div id="infoAreaRow1">
                         <div id="channelIdArea"></div>
                         <div id="timeTagArea"></div>
@@ -40,7 +40,7 @@
                     <div id="descArea"></div>
                 </div>
 
-                <div id="menuArea" class="hidden overlay"></div>
+                <div id="menuArea" class="hidden overlay"></div> 
             </div>
 
             <div id="pilotLight" class="pilotLightOff"></div>
@@ -51,11 +51,18 @@
 
         <div id="remoteBody">
             <div id="test">
-                <div class="button" id="navUpButton"></div>
+                <div class="button navHolder" id="navUpButtonHolder"><div id="navUpButton"></div></div>
+                <div class="button navHolder" id="navRightButtonHolder"><div id="navRightButton"></div></div>
+                <div class="button navHolder" id="navDownButtonHolder"><div id="navDownButton"></div></div>
+                <div class="button navHolder" id="navLeftButtonHolder"><div id="navLeftButton"></div></div>
+                <!-- <div class="button navHolder" id="okButtonHolder"><div id="okButton"></div></div> -->
+                <!-- <div class="button" id="navUpButton"></div>
                 <div class="button" id="navRightButton"></div>
                 <div class="button" id="navDownButton"></div>
-                <div class="button" id="navLeftButton"></div>
+                <div class="button" id="navLeftButton"></div> -->
+                <div class="button" id="okButton">OK</div>
             </div>
+            <div id="remoteLight" class="remoteLightOff"></div>
             <div class="button" id="powerButton"><img src="./img/power.png" alt=""></div>
             <div class="button" id="menuButton">menu</div>
             <div class="button" id="srcButton"></div>
@@ -64,7 +71,6 @@
             <div class="button" id="navRightButton"></div>
             <div class="button" id="navDownButton"></div>
             <div class="button" id="navLeftButton"></div> -->
-            <div class="button" id="okButton"></div>
             <div class="button" id="volButton">
                 <div id="volUpButton"><img src="./img/up.png" alt=""></div>
                 <div id="volButtonLabel">Vol</div>
@@ -97,7 +103,7 @@
 
 
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script> -->
     <script src="./js/main.js"></script>
 </body>
 </html>
