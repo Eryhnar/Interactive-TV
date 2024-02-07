@@ -23,7 +23,7 @@ const numBtns = [
     document.getElementsByClassName("button9"),
     document.getElementsByClassName("button0"),
   ];
-// console.log(numBtns);
+
 function formatTime(time) {
     let hours = time.getHours();
     let minutes = time.getMinutes();
@@ -305,10 +305,6 @@ const appState = {
     changeChannel: function(channel) {
         if (this.power) {
 
-
-            
-            // console.log(this.previousChannelId)
-            // console.log(channel)
             if (this.currentChannelId !== channel) {
                 this.previousChannel = this.currentChannel;
                 this.previousChannelId = this.currentChannelId;
@@ -317,7 +313,9 @@ const appState = {
             }
             VIDSCREEN.src = this.channels[channel].src;
             // console.log(this.channels[channel].src)
-
+            if (!document.getElementById("programInfoArea").classList.contains("hidden")) {
+                this.showInfo(true); //this is probably not the best way to do this
+            }
         }
     },
 
@@ -329,7 +327,7 @@ const appState = {
         let channelKeys = Object.keys(this.channels);
         let currentIndex = channelKeys.indexOf(this.currentChannelId);
         let nextIndex = currentIndex === channelKeys.length - 1 ? 0 : currentIndex + 1;
-        channel = channelKeys[nextIndex];
+        let channel = channelKeys[nextIndex];// changed channel to let channel. I do not know why it was working before.
         this.changeChannel(channel);
     },
 
@@ -337,21 +335,33 @@ const appState = {
         let channelKeys = Object.keys(this.channels);
         let currentIndex = channelKeys.indexOf(this.currentChannelId);
         let nextIndex = currentIndex === 0 ? channelKeys.length - 1 : currentIndex - 1;
-        channel = channelKeys[nextIndex];
+        let channel = channelKeys[nextIndex];// changed channel to let channel. I do not know why it was working before.
         this.changeChannel(channel);
     },
 
     volumeUp: function() {
         if (this.power && this.volume < 100) {
 
-            clearTimeout(volumeDisplayTimeout);
-            this.volume += 10;
-            VIDSCREEN.volume = this.volume / 100;
-            document.getElementById("volumeDisplay").classList.remove("hidden");
-            document.getElementById("volumeLevel").style.height = `${this.volume}%`;
-            volumeDisplayTimeout = setTimeout(() => {
-                volumeDisplay.classList.add("hidden");
-            }, 3000);
+            if (VIDSCREEN.muted) {
+                this.mute();
+                clearTimeout(volumeDisplayTimeout);
+                this.volume += 10;
+                VIDSCREEN.volume = this.volume / 100;
+                document.getElementById("volumeDisplay").classList.remove("hidden");
+                document.getElementById("volumeLevel").style.height = `${this.volume}%`;
+                volumeDisplayTimeout = setTimeout(() => {
+                    volumeDisplay.classList.add("hidden");
+                }, 3000);
+            } else {
+                clearTimeout(volumeDisplayTimeout);
+                this.volume += 10;
+                VIDSCREEN.volume = this.volume / 100;
+                document.getElementById("volumeDisplay").classList.remove("hidden");
+                document.getElementById("volumeLevel").style.height = `${this.volume}%`;
+                volumeDisplayTimeout = setTimeout(() => {
+                    volumeDisplay.classList.add("hidden");
+                }, 3000);
+            }
 
         }
     },
@@ -359,28 +369,43 @@ const appState = {
     volumeDown: function() {
         if (this.power && this.volume > 0) {
 
-            clearTimeout(volumeDisplayTimeout);
-            this.volume -= 10;
-            VIDSCREEN.volume = this.volume / 100;
-            document.getElementById("volumeDisplay").classList.remove("hidden");
-            document.getElementById("volumeLevel").style.height = `${this.volume}%`;
-            volumeDisplayTimeout = setTimeout(() => {
-                volumeDisplay.classList.add("hidden");
-            }, 3000);
+            if (VIDSCREEN.muted) {
+                this.mute();
+                clearTimeout(volumeDisplayTimeout);
+                this.volume -= 10;
+                VIDSCREEN.volume = this.volume / 100;
+                document.getElementById("volumeDisplay").classList.remove("hidden");
+                document.getElementById("volumeLevel").style.height = `${this.volume}%`;
+                volumeDisplayTimeout = setTimeout(() => {
+                    volumeDisplay.classList.add("hidden");
+                }, 3000);
+            } else {
+                clearTimeout(volumeDisplayTimeout);
+                this.volume -= 10;
+                VIDSCREEN.volume = this.volume / 100;
+                document.getElementById("volumeDisplay").classList.remove("hidden");
+                document.getElementById("volumeLevel").style.height = `${this.volume}%`;
+                volumeDisplayTimeout = setTimeout(() => {
+                    volumeDisplay.classList.add("hidden");
+                }, 3000);
+            }
 
         }
     },
 
     mute: function() {
         VIDSCREEN.muted = !VIDSCREEN.muted;
+        document.getElementById("muteArea").classList.toggle("hidden");
     },
 
-    showInfo: function() {
-        document.getElementById("programInfoArea").classList.toggle("hidden");
+    showInfo: function(bool) {
+
+        if (!bool) {
+            document.getElementById("programInfoArea").classList.toggle("hidden");
+        }
         document.getElementById("channelIdArea").value = this.currentChannel;
         document.getElementById("channelIdArea").innerText = this.currentChannelId;
         document.getElementById("timeTagArea").innerText = formatTime(this.date);
-        // document.getElementById("timeTagArea").innerText = `${this.hour}:${this.minutes}`;
         
         let currentPrograms = Object.values(this.channels[this.currentChannelId].programs);
 
@@ -397,9 +422,9 @@ const appState = {
         }).join('');
 
         document.getElementById('infoAreaRow2').innerHTML = programCards;
-        // console.log(programCards);
+        
 
-        document.getElementById("descArea").innerText = currentPrograms[0].description; //this will need to be modified to show the current program
+        document.getElementById("descArea").innerText = currentPrograms[0].description; 
     },
 
     showMenu: function() {
@@ -417,12 +442,8 @@ channels.map((channel) => {
     let keys = Object.keys(appState.channels);
     let index = keys.indexOf(channel)
     let newIndex = index == 9 ? 0 : index+1;
-    // let index = keys.indexOf(channel); 
-    // console.log(index);
-    document.getElementById("menuArea").innerHTML += `<div class="button${newIndex}" id="${channel}">${appState.channels[channel].title}</div>`;
-    // console.log(channel);
-    // console.log(appState.channels[channel].title);
-    // console.log(document.getElementById(channel).classList)
+    document.getElementById("menuButtonsArea").innerHTML += `<div class="button${newIndex} bg-white" id="${channel}">${appState.channels[channel].title}</div>`;
+
 });
 
 numBtns.forEach((btnCollection) => {
@@ -430,7 +451,6 @@ numBtns.forEach((btnCollection) => {
         btn.addEventListener("click", (e) => {
             let buttonClass = Array.from(e.target.classList).find(cls => cls.startsWith('button') && cls.length > 6);
             buttonNumber = buttonClass.slice(-1);
-            // let buttonNumber = e.target.id.slice(-1);
             let channel = `channel${buttonNumber}`;
             appState.changeChannel(channel);
         });
@@ -444,10 +464,12 @@ document.getElementById("powerButton").addEventListener("click", () => {
     if (appState.power) {
         document.getElementById("pilotLight").classList.remove("pilotLightOff");//add to togglePower
         document.getElementById("pilotLight").classList.add("pilotLightOn");//add to togglePower
-            if (appState.previousChannel) {
+        document.getElementById("remoteLight").classList.remove("remoteLightOff");//add to togglePower
+        document.getElementById("remoteLight").classList.add("remoteLightOn");//add to togglePower
+            if (appState.currentChannel) {
                 document.getElementById("tvScreenOff").classList.add("hidden");
                 document.getElementById("tvScreen").classList.remove("hidden");
-                VIDSCREEN.src = appState.previousChannel;
+                VIDSCREEN.src = appState.currentChannel;
             } else {
                 document.getElementById("tvScreenOff").classList.add("hidden");
                 document.getElementById("tvScreen").classList.remove("hidden");
@@ -456,51 +478,38 @@ document.getElementById("powerButton").addEventListener("click", () => {
     } else {
         document.getElementById("pilotLight").classList.remove("pilotLightOn");//add to togglePower
         document.getElementById("pilotLight").classList.add("pilotLightOff");//add to togglePower
+        document.getElementById("remoteLight").classList.remove("remoteLightOn");//add to togglePower
+        document.getElementById("remoteLight").classList.add("remoteLightOff");//add to togglePower
         
-        appState.previousChannel = VIDSCREEN.src;
+        
         
         document.getElementById("tvScreen").classList.add("hidden");
         document.getElementById("tvScreen").pause();
         document.getElementById("tvScreenOff").classList.remove("hidden");
-        // IMGSCREEN.src = "./img/off.jpg";
-
-        OVERLAYS.map((overlay) => {overlay.classList.add("hidden");});
         
         if (VIDSCREEN.muted) {
             appState.mute();
         }
+
+        OVERLAYS.map((overlay) => {overlay.classList.add("hidden");}); 
+        
     }
 });
 
-
-
-// numBtns.map((btn) => {
-    
-//     btn.addEventListener("click", (e) => {
-//         buttonNumber = e.target.id.slice(-1);
-//         channel = `channel${buttonNumber}`
-//         appState.changeChannel(channel);
-//     });
-    
-// });
-
 document.getElementById("muteButton").addEventListener("click", () => {
     if (appState.power) {
-        document.getElementById("muteArea").classList.toggle("hidden");
+        
         appState.mute();
+
     }
 });
 
 document.getElementById("backChannelButton").addEventListener("click", () => {
     if (appState.power) {
         if (appState.previousChannel) {
-            let tempChannel = appState.currentChannel; 
-            // console.log(appState.previousChannel);
-            // console.log(tempChannel);
+            let tempChannel = appState.currentChannel; ;
             appState.currentChannel = appState.previousChannel; 
-            // console.log(appState.currentChannel);
             appState.previousChannel = tempChannel; 
-            // console.log(appState.previousChannel);
             VIDSCREEN.src = appState.currentChannel; 
         }
     }
@@ -517,9 +526,6 @@ document.getElementById("volDownButton").addEventListener("click", (e) => {appSt
 
 document.getElementById("infoButton").addEventListener("click", (e) => {
     
-    // console.log("click");
-    // e.target.classList.toggle("hidden");
-    // console.log(appState.power, appState.currentChannel)
     if(appState.power && appState.currentChannel) {
         
         appState.showInfo();
