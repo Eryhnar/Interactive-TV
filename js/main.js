@@ -491,7 +491,7 @@ document.getElementById("powerButton").addEventListener("click", () => {
             appState.mute();
         }
 
-        OVERLAYS.map((overlay) => {overlay.classList.add("hidden");}); //this is not working properly on mute
+        OVERLAYS.map((overlay) => {overlay.classList.add("hidden");}); 
         
     }
 });
